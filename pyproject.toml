@@ -1,0 +1,139 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "manidreams"
+version = "0.1.0"
+description = "Abstract Framework for Cage-Constrained Robotic Manipulation"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "ManiDreams Team"}
+]
+keywords = ["robotics", "manipulation", "caging", "simulation", "mani-skill"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Robotics",
+]
+
+# Core dependencies - minimal installation
+dependencies = [
+    "numpy>=1.21.0",
+    "gymnasium>=0.26.0",
+    "mani-skill>=3.0.0b0",
+    "opencv-python>=4.5.0",
+    "transforms3d>=0.4.0",
+]
+
+[project.optional-dependencies]
+# PPO training and evaluation
+# Install with: pip install -e ".[ppo]"
+ppo = [
+    "torch>=2.0.0",
+    "tyro>=0.5.0",
+    "tensorboard>=2.10.0",
+]
+
+# Object catching task (RL policy solver)
+# Install with: pip install -e ".[catching]"
+catching = [
+    "torch>=2.0.0",
+]
+
+# Diffusion/Diamond world model support (object pushing pixel tasks)
+# Install with: pip install -e ".[diffusion]"
+diffusion = [
+    "torch>=2.0.0",
+    "hydra-core>=1.3.0",
+    "omegaconf>=2.3.0",
+    "einops>=0.6.0",
+    "pygame>=2.0.0",
+    "pyyaml>=6.0",
+]
+
+# Robustness evaluation scripts (maniskill_defaults)
+# Install with: pip install -e ".[eval]"
+eval = [
+    "torch>=2.0.0",
+    "matplotlib>=3.5.0",
+]
+
+# Full installation with all optional features
+# Install with: pip install -e ".[all]"
+all = [
+    "manidreams[ppo,catching,diffusion,eval]",
+]
+
+# Documentation (Sphinx + GitHub Pages)
+# Install with: pip install -e ".[docs]"
+docs = [
+    "sphinx>=7.0.0",
+    "sphinx-book-theme>=1.1.0",
+    "sphinx-design>=0.5.0",
+    "myst-parser>=2.0.0",
+    "sphinx-autobuild>=2024.0.0",
+    "sphinx-autodoc-typehints>=1.25.0",
+    "sphinx-copybutton>=0.5.0",
+    "sphinxcontrib-mermaid>=0.9.0",
+]
+
+# Development dependencies
+# Install with: pip install -e ".[dev]"
+dev = [
+    "manidreams[all,docs]",
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src", "."]
+include = ["manidreams*", "assets*", "examples*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+    | \.mypy_cache
+    | \.pytest_cache
+    | __pycache__
+    | build
+    | dist
+    | \.egg-info
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+skip_gitignore = true
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+addopts = "-v --tb=short"

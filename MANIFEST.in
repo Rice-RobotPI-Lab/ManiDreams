@@ -1,0 +1,35 @@
+include README.md
+include LICENSE
+include MANIFEST.in
+
+# Documentation
+recursive-include docs_src *.md *.rst
+
+# Examples
+recursive-include examples *.py *.md *.json *.pkl
+
+# RL checkpoints and model weights
+recursive-include examples/samplers/catching/ckpts *.pt *.pth *.ckpt
+
+# Robot assets (URDF, meshes, textures)
+recursive-include assets/robots *.py *.urdf *.xml
+recursive-include assets/robots *.glb *.dae *.stl *.obj *.mtl
+recursive-include assets/robots *.png *.jpg *.bin
+
+# Tests
+recursive-include tests *.py
+
+# Configuration files
+include *.cfg *.ini *.toml
+
+# Exclude development and temporary files
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.pyd
+global-exclude __pycache__
+global-exclude .git*
+global-exclude .pytest_cache
+global-exclude *.egg-info
+
+# Exclude resource directory
+recursive-exclude z_resources_no_need_edit *

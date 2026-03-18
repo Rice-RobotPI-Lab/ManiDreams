@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TSIP &#8212; ManiDreams</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=385b3aba" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=a2693998"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tsip';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Solvers" href="solvers.html" />
+    <link rel="prev" title="Cage Constraints" href="cage_constraints.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="documentation.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ManiDreams</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="why_manidreams.html">Why ManiDreams?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ &amp; Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Core Concepts</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dris.html">DRIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cage_constraints.html">Cage Constraints</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TSIP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solvers.html">Solvers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="supported_tasks.html">Supported Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_tasks.html">Custom Tasks Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/core.html">Core Abstractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/env.html">ManiDreamsEnv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/cages.html">Cage Implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/physics.html">Physics (TSIP) Implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/solvers.html">Solver (Optimizer) Implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/samplers.html">Sampler Implementations</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/Rice-RobotPI-Lab/ManiDreams" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/tsip.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TSIP</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-interface">Abstract Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulationbasedtsip">SimulationBasedTSIP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulationbackend">SimulationBackend</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learningbasedtsip">LearningBasedTSIP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learnedbackend">LearnedBackend</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-vs-learned-tsip">Simulation vs. Learned TSIP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-then-execute-paradigm">Plan-Then-Execute Paradigm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-api-reference">Quick API Reference</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tsip">
+<h1>TSIP<a class="headerlink" href="#tsip" title="Link to this heading">#</a></h1>
+<p><strong>TSIP (Task-Specific Intuitive Physics)</strong> is the forward model abstraction in ManiDreams. Given the current state (DRIS) and an action, a TSIP predicts the next state. This abstraction allows the same solver and cage to work with either a physics simulator or a learned world model.</p>
+<section id="abstract-interface">
+<h2>Abstract Interface<a class="headerlink" href="#abstract-interface" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TSIPBase</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dris</span><span class="p">:</span> <span class="n">DRIS</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span> <span class="n">cage</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">DRIS</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">DRIS</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute next DRIS state given current state and action(s).</span>
+
+<span class="sd">        Single action -&gt; single next DRIS</span>
+<span class="sd">        List of N actions -&gt; list of N next DRIS (parallel evaluation)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>The dual-mode <code class="docutils literal notranslate"><span class="pre">next()</span></code> interface is critical: when given a list of N actions, the TSIP evaluates all of them in parallel and returns N resulting DRIS states. This enables the cage-constrained algorithm to evaluate multiple candidate actions simultaneously.</p>
+</section>
+<section id="simulationbasedtsip">
+<h2>SimulationBasedTSIP<a class="headerlink" href="#simulationbasedtsip" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">SimulationBasedTSIP</span></code> (<code class="docutils literal notranslate"><span class="pre">src/manidreams/physics/simulation_tsip.py</span></code>) uses a physics simulator (ManiSkill/SAPIEN) for forward prediction. It manages parallel GPU-accelerated environments for simultaneous action evaluation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SimulationBasedTSIP</span><span class="p">(</span><span class="n">TSIPBase</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend</span><span class="p">:</span> <span class="n">SimulationBackend</span><span class="p">,</span> <span class="n">env_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">context_info</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_rollout_envs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Key features:</p>
+<ul class="simple">
+<li><p>Creates vectorized environments via <code class="docutils literal notranslate"><span class="pre">backend.create_environment()</span></code> for parallel action evaluation</p></li>
+<li><p>Optional separate rollout environment (<code class="docutils literal notranslate"><span class="pre">num_rollout_envs</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>) for MPPI multi-step trajectory optimization</p></li>
+<li><p>State synchronization: <code class="docutils literal notranslate"><span class="pre">set_dris()</span></code> broadcasts the executor’s current state to all parallel evaluation environments</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">next(dris,</span> <span class="pre">actions)</span></code> — steps all environments in parallel and returns resulting DRIS states via <code class="docutils literal notranslate"><span class="pre">backend.state2dris()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rollout_step(offset_batch)</span></code> — batch trajectory rollout for MPPI optimizer</p></li>
+</ul>
+<section id="simulationbackend">
+<h3>SimulationBackend<a class="headerlink" href="#simulationbackend" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">SimulationBackend</span></code> (abstract) defines the interface that task-specific simulator wrappers must implement:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SimulationBackend</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_environment</span><span class="p">(</span><span class="n">env_config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">gym</span><span class="o">.</span><span class="n">Env</span>       <span class="c1"># Create the environment</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_state</span><span class="p">(</span><span class="n">env</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span>          <span class="c1"># Extract state for broadcasting</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_state</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>                    <span class="c1"># Set state on eval environments</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">state2dris</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">DRIS</span><span class="p">]</span>           <span class="c1"># Convert observations to DRIS</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dris2state</span><span class="p">(</span><span class="n">dris</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span>        <span class="c1"># Convert DRIS back to state</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step_act</span><span class="p">(</span><span class="n">actions</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">cage</span><span class="p">,</span> <span class="n">single_action</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span>  <span class="c1"># Execute action(s)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_env</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>                        <span class="c1"># Load environment configuration</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_object</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>                     <span class="c1"># Load object assets</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_robot</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>                      <span class="c1"># Load robot configuration</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="learningbasedtsip">
+<h2>LearningBasedTSIP<a class="headerlink" href="#learningbasedtsip" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">LearningBasedTSIP</span></code> (<code class="docutils literal notranslate"><span class="pre">src/manidreams/physics/learned_tsip.py</span></code>) uses a learned world model (e.g., Diamond diffusion model) for forward prediction. Unlike SimulationBasedTSIP, the backend maintains internal state (the learned model’s hidden state).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">LearningBasedTSIP</span><span class="p">(</span><span class="n">TSIPBase</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend</span><span class="p">:</span> <span class="n">LearnedBackend</span><span class="p">,</span> <span class="n">model_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context_info</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="learnedbackend">
+<h3>LearnedBackend<a class="headerlink" href="#learnedbackend" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">LearnedBackend</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_model</span><span class="p">(</span><span class="n">model_config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span>                  <span class="c1"># Load pretrained model</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">DRIS</span>                                  <span class="c1"># Reset and return initial DRIS</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict_step</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">current_state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]</span>  <span class="c1"># Predict next state</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_dris</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">DRIS</span>                               <span class="c1"># Get current DRIS</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_dris</span><span class="p">(</span><span class="n">dris</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>                           <span class="c1"># Set internal state from DRIS</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="simulation-vs-learned-tsip">
+<h2>Simulation vs. Learned TSIP<a class="headerlink" href="#simulation-vs-learned-tsip" title="Link to this heading">#</a></h2>
+<p>The same Cage and Solver pipeline works with either TSIP backend. The key differences:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>SimulationBasedTSIP</p></th>
+<th class="head"><p>LearningBasedTSIP</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Engine</p></td>
+<td><p>ManiSkill/SAPIEN (GPU physics)</p></td>
+<td><p>Trained diffusion model</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parallel evaluation</p></td>
+<td><p>N environments natively</p></td>
+<td><p>Sequential</p></td>
+</tr>
+<tr class="row-even"><td><p>Determinism</p></td>
+<td><p>Deterministic</p></td>
+<td><p>Stochastic (diffusion sampling)</p></td>
+</tr>
+<tr class="row-odd"><td><p>State management</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">set_state()</span></code> broadcasts to eval envs</p></td>
+<td><p>Backend maintains internal model state</p></td>
+</tr>
+<tr class="row-even"><td><p>Observation space</p></td>
+<td><p>Any (state, image, point cloud)</p></td>
+<td><p>64x64 RGB images</p></td>
+</tr>
+<tr class="row-odd"><td><p>Action space</p></td>
+<td><p>Any (continuous, discrete)</p></td>
+<td><p>16 discrete directions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The learned TSIP enables cage-constrained planning with a world model instead of a physics simulator, for scenarios where an accurate simulator is unavailable. It trades off prediction fidelity for generality.</p>
+</section>
+<section id="plan-then-execute-paradigm">
+<h2>Plan-Then-Execute Paradigm<a class="headerlink" href="#plan-then-execute-paradigm" title="Link to this heading">#</a></h2>
+<p>Some tasks (e.g., object picking) use a two-phase workflow:</p>
+<p><strong>Phase 1: Planning</strong> — Run <code class="docutils literal notranslate"><span class="pre">dream()</span></code> on TSIP with the solver and cage. The TSIP uses N parallel environments (e.g., 16 envs on GPU) to evaluate candidates. No rendering, no executor. This produces a planned action sequence and cage parameter history.</p>
+<p><strong>Phase 2: Execution</strong> — Replay the planned action sequence on an independent executor environment (e.g., 1 env with rendering on a separate GPU). The executor creates its own simulation instance, ensuring complete isolation from the planning model.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Phase 1: Plan</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">ManiDreamsEnv</span><span class="p">(</span><span class="n">tsip</span><span class="o">=</span><span class="n">tsip</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="n">mppi_optimizer</span><span class="p">,</span> <span class="n">cage</span><span class="o">=</span><span class="n">cage</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="n">trajectory</span><span class="p">,</span> <span class="n">action_history</span><span class="p">,</span> <span class="n">cage_history</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">dream</span><span class="p">(</span><span class="n">horizon</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="c1"># Phase 2: Execute</span>
+<span class="n">executor</span> <span class="o">=</span> <span class="n">PickingTaskExecutor</span><span class="p">()</span>
+<span class="n">executor</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">env_config</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">action</span><span class="p">,</span> <span class="n">cage_params</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">action_history</span><span class="p">,</span> <span class="n">cage_history</span><span class="p">):</span>
+    <span class="n">executor</span><span class="o">.</span><span class="n">set_cage</span><span class="p">(</span><span class="n">cage_params</span><span class="p">)</span>
+    <span class="n">obs</span><span class="p">,</span> <span class="n">feedback</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<span class="n">executor</span><span class="o">.</span><span class="n">close_and_retract</span><span class="p">()</span>  <span class="c1"># Grasp + lift</span>
+</pre></div>
+</div>
+<p>This separation allows the planning model to differ from the execution environment (e.g., simplified physics for planning, full-fidelity for execution) and facilitates sim-to-real transfer.</p>
+</section>
+<section id="quick-api-reference">
+<h2>Quick API Reference<a class="headerlink" href="#quick-api-reference" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TSIPBase</span>
+  <span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="n">dris</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DRIS</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="n">DRIS</span><span class="p">]</span>    <span class="c1"># Forward predict</span>
+  <span class="o">.</span><span class="n">reset</span><span class="p">()</span>                                      <span class="c1"># Reset state</span>
+
+<span class="n">SimulationBasedTSIP</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">env_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">context_info</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_rollout_envs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">env</span>                                          <span class="c1"># The underlying gym.Env</span>
+  <span class="o">.</span><span class="n">reset</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">DRIS</span>
+  <span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="n">dris</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DRIS</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="n">DRIS</span><span class="p">]</span>     <span class="c1"># Step in parallel envs</span>
+  <span class="o">.</span><span class="n">get_dris</span><span class="p">(</span><span class="n">env_indices</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">DRIS</span><span class="p">]</span>
+  <span class="o">.</span><span class="n">set_dris</span><span class="p">(</span><span class="n">dris</span><span class="p">,</span> <span class="n">env_indices</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">rollout_step</span><span class="p">(</span><span class="n">offset_batch</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">DRIS</span><span class="p">]</span>    <span class="c1"># MPPI batch rollout</span>
+  <span class="o">.</span><span class="n">set_rollout_state</span><span class="p">(</span><span class="n">dris</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cage_constraints.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Cage Constraints</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="solvers.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Solvers</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-interface">Abstract Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulationbasedtsip">SimulationBasedTSIP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulationbackend">SimulationBackend</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learningbasedtsip">LearningBasedTSIP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learnedbackend">LearnedBackend</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-vs-learned-tsip">Simulation vs. Learned TSIP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-then-execute-paradigm">Plan-Then-Execute Paradigm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-api-reference">Quick API Reference</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ManiDreams Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, ManiDreams Team.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

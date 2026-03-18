@@ -1,0 +1,39 @@
+name: docs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install documentation dependencies
+        run: |
+          pip install sphinx sphinx-book-theme sphinx-design myst-parser \
+            sphinx-autodoc-typehints sphinx-copybutton
+          pip install -e . --no-deps
+
+      - name: Build Sphinx documentation
+        run: |
+          rm -rf docs
+          sphinx-build docs_src docs
+          touch docs/.nojekyll
+
+      - name: Commit built docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git diff --cached --quiet && echo "No changes to docs" || \
+            git commit -m "Rebuild documentation" && git push
