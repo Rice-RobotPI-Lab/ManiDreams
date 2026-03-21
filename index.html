@@ -302,7 +302,7 @@
 <!-- ══════════════════════════════════════════════════════════════════ -->
 <!-- DRIS REAL2SIM (2×6 scrollable video grid)                         -->
 <!-- ══════════════════════════════════════════════════════════════════ -->
-<section class="section">
+<section class="section" id="dris-real2sim">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Real2Sim with DRIS</h2>
     <div class="columns is-vcentered" style="margin-bottom: 1rem;">
@@ -312,7 +312,7 @@
             Only stereo streaming, generalizes to any unknown objects without any pre-modeling. Real-time (15 FPS) on a RTX3070.<br>
             Physics backend: <a href="https://github.com/newton-physics/newton">Newton v1.0.0</a>.<br>
             Bounding box estimation: <a href="https://github.com/Vector-Wangel/Fast-FoundationStereoPose">Fast-FoundationStereo + SAM2</a>.<br>
-            (Drag horizontally for more)
+            (Drag horizontally for more) · <a href="zeroshot_real2sim.html">Setup Tutorial →</a>
           </p>
         </div>
       </div>
@@ -480,36 +480,36 @@
 
     <div class="columns is-centered">
       <!-- Object Pushing (sim) -->
-      <div class="column is-one-quarter video-item">
+      <div class="column is-one-quarter video-item" id="example-pushing-sim">
         <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/11.mp4" type="video/mp4">
         </video>
         <div class="video-label">Object Pushing</div>
-        <div class="video-desc">Simulation-based TSIP</div>
+        <div class="video-desc">Simulation-based TSIP · <a href="supported_tasks.html#object-pushing-simulation">Docs →</a></div>
       </div>
       <!-- Object Pushing (learned) -->
-      <div class="column is-one-quarter video-item">
+      <div class="column is-one-quarter video-item" id="example-pushing-learned">
         <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/12.mp4" type="video/mp4">
         </video>
         <div class="video-label">Object Pushing</div>
-        <div class="video-desc">Learning-based TSIP</div>
+        <div class="video-desc">Learning-based TSIP · <a href="supported_tasks.html#object-pushing-learned-world-model">Docs →</a></div>
       </div>
       <!-- Ball Catching -->
-      <div class="column is-one-quarter video-item">
+      <div class="column is-one-quarter video-item" id="example-catching">
         <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/13.mp4" type="video/mp4">
         </video>
         <div class="video-label">Ball Catching</div>
-        <div class="video-desc">RL policy sampler</div>
+        <div class="video-desc">RL policy sampler · <a href="supported_tasks.html#object-catching">Docs →</a></div>
       </div>
       <!-- Card Picking -->
-      <div class="column is-one-quarter video-item">
+      <div class="column is-one-quarter video-item" id="example-picking">
         <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/14.mp4" type="video/mp4">
         </video>
         <div class="video-label">Card Picking</div>
-        <div class="video-desc">MPPI optimizer</div>
+        <div class="video-desc">MPPI optimizer · <a href="supported_tasks.html#object-picking">Docs →</a></div>
       </div>
     </div>
   </div>
@@ -554,7 +554,7 @@
 <!-- ══════════════════════════════════════════════════════════════════ -->
 <!-- DEFAULT MANISKILL TASKS (3 videos)                                -->
 <!-- ══════════════════════════════════════════════════════════════════ -->
-<section class="section">
+<section class="section" id="example-maniskill-defaults">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
@@ -562,6 +562,7 @@
         <div class="content has-text-justified">
           <p>
             Evaluation on standard ManiSkill benchmarks (top: simulation-based TSIP, bottom: executor).
+            <a href="supported_tasks.html#maniskill-default-tasks">Docs →</a>
           </p>
         </div>
       </div>

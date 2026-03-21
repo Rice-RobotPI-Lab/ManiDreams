@@ -1,0 +1,687 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Zero-shot Real-to-Sim Demo &#8212; ManiDreams</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=385b3aba" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=a2693998"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'zeroshot_real2sim';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api/index.html" />
+    <link rel="prev" title="Custom Tasks Guide" href="custom_tasks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="documentation.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ManiDreams</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">About the Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="why_manidreams.html">Why ManiDreams?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ &amp; Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Core Concepts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dris.html">DRIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cage_constraints.html">Cage Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tsip.html">TSIP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solvers.html">Solvers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="supported_tasks.html">Supported Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_tasks.html">Custom Tasks Guide</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Zero-shot Real-to-Sim Demo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/core.html">Core Abstractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/env.html">ManiDreamsEnv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/cages.html">Cage Implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/physics.html">Physics (TSIP) Implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/solvers.html">Solver (Optimizer) Implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/samplers.html">Sampler Implementations</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/Rice-RobotPI-Lab/ManiDreams" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/zeroshot_real2sim.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Zero-shot Real-to-Sim Demo</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-environment-and-install-pytorch">Step 1: Create environment and install PyTorch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-manidreams">Step 2: Install ManiDreams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-install-fast-foundationstereopose-includes-sam2">Step 3: Install Fast-FoundationStereoPose (includes SAM2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-download-model-weights">Step 4: Download model weights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-install-newton-physics-visualization">Step 5: Install Newton physics + visualization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-demo">Running the Demo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-guide">Usage Guide</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-table-detection">Phase 1: Table Detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-object-tracking">Phase 2: Object Tracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate">Simulate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reset">Reset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="zero-shot-real-to-sim-demo">
+<h1>Zero-shot Real-to-Sim Demo<a class="headerlink" href="#zero-shot-real-to-sim-demo" title="Link to this heading">#</a></h1>
+<p>Real-time perception-to-simulation: detect a real object via stereo camera, build a domain-randomized Newton physics simulation, and interact via a browser-based UI.</p>
+<p><a class="reference internal" href="#index.html#dris-real2sim"><span class="xref myst">Demo videos on project page →</span></a></p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This demo combines:</p>
+<ul class="simple">
+<li><p><strong>Intel RealSense D415</strong> — stereo IR + RGB capture</p></li>
+<li><p><strong>Fast-FoundationStereo (FFS)</strong> — zero-shot stereo matching → depth → point cloud</p></li>
+<li><p><strong>SAM2</strong> — real-time object segmentation and tracking</p></li>
+<li><p><strong>Newton XPBD</strong> — multi-world physics simulation with domain randomization</p></li>
+<li><p><strong>Viser</strong> — 3D visualization with interactive gizmo control</p></li>
+</ul>
+<p>The workflow:</p>
+<ol class="arabic simple">
+<li><p><strong>Select table</strong> — SAM2 segments table surface, plane is fitted and locked</p></li>
+<li><p><strong>Select object</strong> — SAM2 tracks object, oriented bounding box (OBB) is estimated</p></li>
+<li><p><strong>Simulate</strong> — OBB parameters are used to build 32 domain-randomized Newton worlds</p></li>
+<li><p><strong>Interact</strong> — drag the gizmo in the Viser 3D view to push objects</p></li>
+</ol>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<p><strong>Hardware:</strong></p>
+<ul class="simple">
+<li><p>Intel RealSense D415 camera (USB 3.0)</p></li>
+<li><p>NVIDIA GPU with CUDA support (tested on RTX 3070+)</p></li>
+</ul>
+<p><strong>Software:</strong></p>
+<ul class="simple">
+<li><p>Linux (tested on Ubuntu 22.04/24.04)</p></li>
+<li><p>CUDA 12.4+</p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>All steps assume you start from a clean conda environment.</p>
+<section id="step-1-create-environment-and-install-pytorch">
+<h3>Step 1: Create environment and install PyTorch<a class="headerlink" href="#step-1-create-environment-and-install-pytorch" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>manidreams<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>manidreams
+
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">torch</span><span class="o">==</span><span class="m">2</span>.6.0<span class="w"> </span><span class="nv">torchvision</span><span class="o">==</span><span class="m">0</span>.21.0<span class="w"> </span>xformers<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/cu124
+</pre></div>
+</div>
+</section>
+<section id="step-2-install-manidreams">
+<h3>Step 2: Install ManiDreams<a class="headerlink" href="#step-2-install-manidreams" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Rice-RobotPI-Lab/ManiDreams.git
+<span class="nb">cd</span><span class="w"> </span>ManiDreams
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<span class="nb">cd</span><span class="w"> </span>..
+</pre></div>
+</div>
+</section>
+<section id="step-3-install-fast-foundationstereopose-includes-sam2">
+<h3>Step 3: Install Fast-FoundationStereoPose (includes SAM2)<a class="headerlink" href="#step-3-install-fast-foundationstereopose-includes-sam2" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Vector-Wangel/Fast-FoundationStereoPose.git
+<span class="nb">cd</span><span class="w"> </span>Fast-FoundationStereoPose
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+pip<span class="w"> </span>install<span class="w"> </span>pyrealsense2
+<span class="nb">cd</span><span class="w"> </span>..
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FFS depends on <code class="docutils literal notranslate"><span class="pre">opencv-contrib-python</span></code> while ManiDreams pulls <code class="docutils literal notranslate"><span class="pre">opencv-python</span></code> via mani-skill. Installing FFS requirements <strong>after</strong> ManiDreams ensures <code class="docutils literal notranslate"><span class="pre">opencv-contrib-python</span></code> takes precedence (it is a superset of <code class="docutils literal notranslate"><span class="pre">opencv-python</span></code>).</p>
+</div>
+</section>
+<section id="step-4-download-model-weights">
+<h3>Step 4: Download model weights<a class="headerlink" href="#step-4-download-model-weights" title="Link to this heading">#</a></h3>
+<p><strong>FFS stereo model:</strong></p>
+<p>Download from the link in the <a class="reference external" href="https://github.com/Vector-Wangel/Fast-FoundationStereoPose#readme">FFS README</a> and place at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fast</span><span class="o">-</span><span class="n">FoundationStereoPose</span><span class="o">/</span><span class="n">weights</span><span class="o">/</span><span class="mi">23</span><span class="o">-</span><span class="mi">36</span><span class="o">-</span><span class="mi">37</span><span class="o">/</span><span class="n">model_best_bp2_serialize</span><span class="o">.</span><span class="n">pth</span>
+</pre></div>
+</div>
+<p><strong>SAM2 checkpoint:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>Fast-FoundationStereoPose/SAM2_streaming/checkpoints/sam2.1
+wget<span class="w"> </span>-P<span class="w"> </span>Fast-FoundationStereoPose/SAM2_streaming/checkpoints/sam2.1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_small.pt
+</pre></div>
+</div>
+</section>
+<section id="step-5-install-newton-physics-visualization">
+<h3>Step 5: Install Newton physics + visualization<a class="headerlink" href="#step-5-install-newton-physics-visualization" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>newton-physics<span class="w"> </span>warp-lang<span class="w"> </span>viser<span class="w"> </span>flask
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-the-demo">
+<h2>Running the Demo<a class="headerlink" href="#running-the-demo" title="Link to this heading">#</a></h2>
+<p>The demo expects <code class="docutils literal notranslate"><span class="pre">Fast-FoundationStereoPose</span></code> as a sibling directory to <code class="docutils literal notranslate"><span class="pre">ManiDreams</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>your_workspace/
+├── ManiDreams/
+└── Fast-FoundationStereoPose/
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>ManiDreams
+python<span class="w"> </span>examples/tasks/zeroshot_real2sim_demo/main.py
+</pre></div>
+</div>
+<p>To specify a custom FFS location:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">FFS_DIR</span><span class="o">=</span>/path/to/Fast-FoundationStereoPose<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>python<span class="w"> </span>examples/tasks/zeroshot_real2sim_demo/main.py
+</pre></div>
+</div>
+<p>The demo prints two URLs:</p>
+<ul class="simple">
+<li><p><strong>Web UI</strong> — <code class="docutils literal notranslate"><span class="pre">http://localhost:909x</span></code> — left panel (RGB + SAM2 mask) + right panel (Viser 3D)</p></li>
+<li><p><strong>Viser</strong> — <code class="docutils literal notranslate"><span class="pre">http://localhost:909y</span></code> — standalone 3D viewer</p></li>
+</ul>
+</section>
+<section id="usage-guide">
+<h2>Usage Guide<a class="headerlink" href="#usage-guide" title="Link to this heading">#</a></h2>
+<section id="phase-1-table-detection">
+<h3>Phase 1: Table Detection<a class="headerlink" href="#phase-1-table-detection" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Click <strong>“1. Select Table”</strong> in the toolbar</p></li>
+<li><p>Draw a bounding box over the table surface (or click a point on it)</p></li>
+<li><p>SAM2 segments the table, a plane is fitted over ~10 frames</p></li>
+<li><p>Once variance converges, the plane <strong>locks</strong> automatically (shown as a blue quad in 3D view)</p></li>
+</ol>
+</section>
+<section id="phase-2-object-tracking">
+<h3>Phase 2: Object Tracking<a class="headerlink" href="#phase-2-object-tracking" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Click <strong>“2. Select Point”</strong> or <strong>“2. Select BBox”</strong></p></li>
+<li><p>Click on or draw a box around the target object</p></li>
+<li><p>SAM2 tracks the object, an oriented bounding box (OBB) is estimated with temporal smoothing</p></li>
+<li><p>The green wireframe OBB appears in the 3D view</p></li>
+</ol>
+</section>
+<section id="simulate">
+<h3>Simulate<a class="headerlink" href="#simulate" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Click <strong>“Simulate”</strong> — builds 32 Newton worlds with domain-randomized copies of the detected object</p></li>
+<li><p>Perception pauses to free GPU VRAM for physics</p></li>
+<li><p>Semi-transparent colored boxes appear in the 3D view</p></li>
+<li><p><strong>Drag the gizmo</strong> (RGB arrows) to push the actor into objects</p></li>
+<li><p>Click <strong>“Pause Sim”</strong> to resume perception while keeping the simulation state</p></li>
+</ol>
+</section>
+<section id="reset">
+<h3>Reset<a class="headerlink" href="#reset" title="Link to this heading">#</a></h3>
+<p>Click <strong>“Reset All”</strong> to clear everything and start over with a new object.</p>
+</section>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<p>This demo maps to ManiDreams components as follows:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Demo Module</p></th>
+<th class="head"><p>ManiDreams Component</p></th>
+<th class="head"><p>File</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FFS + SAM2 + OBB estimation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D415FFSExecutor</span></code> (ExecutorBase)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">examples/executors/d415_ffs_executor.py</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Newton multi-world simulation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NewtonBackend</span></code> (SimulationBackend)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">examples/physics/newton_backend.py</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Domain randomization</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">randomize_envs()</span></code> in NewtonBackend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">examples/physics/newton_backend.py</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Viser gizmo → actor target</p></td>
+<td><p>Action (no solver — teleop)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">examples/tasks/zeroshot_real2sim_demo/main.py</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Flask Web UI</p></td>
+<td><p>Embedded in main script</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">examples/tasks/zeroshot_real2sim_demo/main.py</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The demo uses <strong>no Solver or Cage</strong> — it is a teleop demo. To add autonomous planning, connect a Solver + Cage to the existing TSIP, as shown in the <a class="reference internal" href="supported_tasks.html#object-pushing-simulation"><span class="std std-ref">object pushing example</span></a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="custom_tasks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Custom Tasks Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="api/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">API Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-environment-and-install-pytorch">Step 1: Create environment and install PyTorch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-manidreams">Step 2: Install ManiDreams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-install-fast-foundationstereopose-includes-sam2">Step 3: Install Fast-FoundationStereoPose (includes SAM2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-download-model-weights">Step 4: Download model weights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-install-newton-physics-visualization">Step 5: Install Newton physics + visualization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-demo">Running the Demo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-guide">Usage Guide</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-table-detection">Phase 1: Table Detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-object-tracking">Phase 2: Object Tracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate">Simulate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reset">Reset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ManiDreams Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, ManiDreams Team.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

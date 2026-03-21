@@ -49,6 +49,7 @@ solvers
 
 supported_tasks
 custom_tasks
+zeroshot_real2sim
 :::
 
 :::{toctree}
