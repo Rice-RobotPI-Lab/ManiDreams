@@ -31,30 +31,59 @@ pip install -e ".[all]"
 
 ## Quick Start
 
-```python
-import gymnasium as gym
-from manidreams.env import ManiDreamsEnv
-from manidreams.cages.geometric import CircularCage
-from manidreams.solvers.optimizers.geometric_optimizer import GeometricOptimizer
-from manidreams.physics.simulation_tsip import SimulationBasedTSIP
+### Object Pushing (Simulation)
 
-# 1. Create TSIP with your simulation backend
-tsip = SimulationBasedTSIP(backend=my_backend, env_config={...})
+Multi-object herding with orbital cage constraints in parallel ManiSkill environments.
 
-# 2. Create cage constraint
-cage = CircularCage(state_space=state_space, center=[0, 0], radius=0.28,
-                    time_varying=True, orbit_radius=0.2, orbit_speed=0.1)
-
-# 3. Create solver and environment
-solver = GeometricOptimizer(config={'horizon': 1, 'num_trajectories': 16})
-env = ManiDreamsEnv(tsip=tsip, action_space=action_space, cage=cage, solver=solver)
-
-# 4. Plan under cage constraints
-env.reset(seed=42)
-trajectory, actions, cage_history = env.dream(horizon=50)
+```bash
+python examples/tasks/object_pushing/main.py
 ```
 
-See `examples/tasks/` for complete runnable scripts (pushing, catching, picking).
+### Object Pushing (Diffusion World Model)
+
+Cage-constrained planning using a learned diffusion world model. Requires downloading model weights (see [Model Weights](#model-weights)).
+
+```bash
+python examples/tasks/object_pushing/main_pixel.py
+```
+
+With iterative feedback loop between diffusion planning and real execution:
+
+```bash
+python examples/tasks/object_pushing/main_pixel_feedback.py
+```
+
+### Object Picking
+
+MPPI-based trajectory optimization with 3D cage constraints for pick-and-place.
+
+```bash
+python examples/tasks/object_picking/main.py
+```
+
+### Object Catching
+
+Plate-based ball catching with optional CAGE enhancement.
+
+```bash
+# Baseline (direct policy)
+python examples/tasks/object_catching/main.py --num_samples 0
+
+# CAGE mode (8 candidate actions, 16 DRIS copies)
+python examples/tasks/object_catching/main.py --num_samples 8 --num_objs_tsip 16
+```
+
+### ManiSkill Default Tasks
+
+PushCube, PickCube, and PushT with PPO policies and optional CAGE enhancement.
+
+```bash
+python examples/tasks/maniskill_defaults/main.py --task PushCube-v1
+python examples/tasks/maniskill_defaults/main.py --task PickCube-v1
+python examples/tasks/maniskill_defaults/main.py --task PushT-v0
+```
+
+Use `--num_samples 0` for baseline (direct policy) or `--num_samples 16` for CAGE mode.
 
 ## Model Weights
 
