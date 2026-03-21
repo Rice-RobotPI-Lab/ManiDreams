@@ -87,7 +87,7 @@ Use `--num_samples 0` for baseline (direct policy) or `--num_samples 16` for CAG
 
 ### Zero-shot Real-to-Sim Demo
 
-Real-time object detection (D415 + stereo) with domain-randomized Newton physics simulation. See [setup tutorial](https://rice-robotpi-lab.github.io/ManiDreams/zeroshot_real2sim.html) and [demo videos](https://rice-robotpi-lab.github.io/ManiDreams/index.html#dris-real2sim).
+Real-time object detection (D415 + stereo) with domain-randomized Newton physics simulation. See [setup tutorial](https://rice-robotpi-lab.github.io/ManiDreams/real2sim_demo.html) and [demo videos](https://rice-robotpi-lab.github.io/ManiDreams/index.html#dris-real2sim).
 
 ## Model Weights
 
@@ -103,7 +103,7 @@ Full documentation is available at the [docs site](https://rice-robotpi-lab.gith
 
 - [Why ManiDreams?](https://rice-robotpi-lab.github.io/ManiDreams/why_manidreams.html) — Architecture and design principles
 - [Core Concepts](https://rice-robotpi-lab.github.io/ManiDreams/dris.html) — DRIS, Cage, TSIP, Solvers
-- [Supported Tasks](https://rice-robotpi-lab.github.io/ManiDreams/supported_tasks.html) — Object pushing, catching, picking, and more
+- [Runnable Examples](https://rice-robotpi-lab.github.io/ManiDreams/runnable_examples.html) — Object pushing, catching, picking, and more
 - [API Reference](https://rice-robotpi-lab.github.io/ManiDreams/api/index.html)
 
 ## Project Structure
