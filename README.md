@@ -1,5 +1,9 @@
 # [ManiDreams](https://rice-robotpi-lab.github.io/ManiDreams/)
 
+[![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://rice-robotpi-lab.github.io/ManiDreams/)
+[![Documentation](https://img.shields.io/badge/Docs-Online-green)](https://rice-robotpi-lab.github.io/ManiDreams/documentation.html)
+[![arXiv](https://img.shields.io/badge/arXiv-2603.18336-b31b1b)](https://arxiv.org/abs/2603.18336)
+
 ManiDreams: An Open-Source Library for Robust Object Manipulation via Uncertainty-aware World Models
 
 ## Overview
