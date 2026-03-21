@@ -85,6 +85,10 @@ python examples/tasks/maniskill_defaults/main.py --task PushT-v0
 
 Use `--num_samples 0` for baseline (direct policy) or `--num_samples 16` for CAGE mode.
 
+### Zero-shot Real-to-Sim Demo
+
+Real-time object detection (D415 + stereo) with domain-randomized Newton physics simulation. See [setup tutorial](https://rice-robotpi-lab.github.io/ManiDreams/zeroshot_real2sim.html) and [demo videos](https://rice-robotpi-lab.github.io/ManiDreams/index.html#dris-real2sim).
+
 ## Model Weights
 
 The pixel-based pushing task requires a diffusion model checkpoint. Download `push16.pt` from [Google Drive](https://drive.google.com/file/d/1OBTPrz3g2i7OzF2M0-Zdt8ISFGINJhnG/view?usp=sharing) and place it at:
@@ -114,10 +118,10 @@ src/manidreams/          # Core package
 └── env.py               # ManiDreamsEnv: Gym-compatible interface with dream()
 
 examples/                # Task-specific integration
-├── physics/             # Backend wrappers (ManiSkill, Diamond diffusion)
+├── physics/             # Backend wrappers (ManiSkill, Newton, Diamond diffusion)
 ├── samplers/            # Trained policies and checkpoints
-├── tasks/               # Main scripts (pushing, catching, picking)
-└── executors/           # Task-specific executors
+├── tasks/               # Main scripts (pushing, catching, picking, real2sim)
+└── executors/           # Task-specific executors (simulation, D415+FFS)
 ```
 
 ## License
