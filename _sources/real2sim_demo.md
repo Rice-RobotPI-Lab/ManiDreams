@@ -2,8 +2,6 @@
 
 Real-time perception-to-simulation: detect a real object via stereo camera, build a domain-randomized Newton physics simulation, and interact via a browser-based UI.
 
-[Demo videos on project page →](index.html#dris-real2sim)
-
 ## Overview
 
 This demo combines:
@@ -153,4 +151,4 @@ This demo maps to ManiDreams components as follows:
 | Viser gizmo → actor target | Action (no solver — teleop) | `examples/tasks/zeroshot_real2sim_demo/main.py` |
 | Flask Web UI | Embedded in main script | `examples/tasks/zeroshot_real2sim_demo/main.py` |
 
-The demo uses **no Solver or Cage** — it is a teleop demo. To add autonomous planning, connect a Solver + Cage to the existing TSIP, as shown in the [object pushing example](supported_tasks.md#object-pushing-simulation).
+The demo uses **no Solver or Cage** — it is a teleop demo. To add autonomous planning, connect a Solver + Cage to the existing TSIP, as shown in the [object pushing example](runnable_examples.md#object-pushing-simulation).

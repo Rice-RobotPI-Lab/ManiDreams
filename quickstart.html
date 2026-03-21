@@ -172,9 +172,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="supported_tasks.html">Supported Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runnable_examples.html">Runnable Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maniskill_defaults.html">ManiSkill Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real2sim_demo.html">Zero-shot Real-to-Sim Demo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom_tasks.html">Custom Tasks Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zeroshot_real2sim.html">Zero-shot Real-to-Sim Demo</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -347,9 +348,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-example">Minimal Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-flow">Execution Flow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">What’s Next</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-simulation">Object Pushing (Simulation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-diffusion-world-model">Object Pushing (Diffusion World Model)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-picking">Object Picking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-catching">Object Catching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maniskill-default-tasks">ManiSkill Default Tasks</a></li>
 </ul>
             </nav>
         </div>
@@ -363,77 +366,53 @@
                   
   <section id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h1>
-<p>The ManiDreams pipeline generates candidate actions, predicts outcomes via TSIP, evaluates against cage constraints, and executes the best valid action:</p>
-<a class="reference internal image-reference" href="_images/ManiDreams_pipeline.svg"><img alt="ManiDreams Pipeline" src="_images/ManiDreams_pipeline.svg" style="width: 100%;" />
-</a>
-<section id="minimal-example">
-<h2>Minimal Example<a class="headerlink" href="#minimal-example" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gym</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">manidreams.env</span><span class="w"> </span><span class="kn">import</span> <span class="n">ManiDreamsEnv</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">manidreams.cages.geometric</span><span class="w"> </span><span class="kn">import</span> <span class="n">CircularCage</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">manidreams.solvers.optimizers.geometric_optimizer</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeometricOptimizer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">manidreams.physics.simulation_tsip</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulationBasedTSIP</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">examples.physics.push_backend_sim</span><span class="w"> </span><span class="kn">import</span> <span class="n">PushBackend</span>
-
-<span class="c1"># 1. Create backend (16 parallel ManiSkill environments)</span>
-<span class="n">backend</span> <span class="o">=</span> <span class="n">PushBackend</span><span class="p">()</span>
-<span class="n">tsip</span> <span class="o">=</span> <span class="n">SimulationBasedTSIP</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span> <span class="n">env_config</span><span class="o">=</span><span class="p">{</span>
-    <span class="s1">&#39;env_id&#39;</span><span class="p">:</span> <span class="s1">&#39;CustomPushT-v2multi&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;num_envs&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-    <span class="s1">&#39;render_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;human&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;sim_backend&#39;</span><span class="p">:</span> <span class="s1">&#39;gpu&#39;</span>
-<span class="p">})</span>
-
-<span class="c1"># 2. Create cage with orbital trajectory</span>
-<span class="n">cage</span> <span class="o">=</span> <span class="n">CircularCage</span><span class="p">(</span>
-    <span class="n">state_space</span><span class="o">=</span><span class="n">gym</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
-    <span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
-    <span class="n">radius</span><span class="o">=</span><span class="mf">0.28</span><span class="p">,</span>
-    <span class="n">time_varying</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>    <span class="c1"># Enable dynamic constraints</span>
-    <span class="n">orbit_radius</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>     <span class="c1"># Orbital motion parameters</span>
-    <span class="n">orbit_speed</span><span class="o">=</span><span class="mf">0.1</span>
-<span class="p">)</span>
-
-<span class="c1"># 3. Create solver and environment</span>
-<span class="n">solver</span> <span class="o">=</span> <span class="n">GeometricOptimizer</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;horizon&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;num_trajectories&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">ManiDreamsEnv</span><span class="p">(</span>
-    <span class="n">tsip</span><span class="o">=</span><span class="n">tsip</span><span class="p">,</span>
-    <span class="n">action_space</span><span class="o">=</span><span class="n">gym</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span>
-    <span class="n">cage</span><span class="o">=</span><span class="n">cage</span><span class="p">,</span>
-    <span class="n">solver</span><span class="o">=</span><span class="n">solver</span>
-<span class="p">)</span>
-
-<span class="c1"># 4. Dream: plan under cage constraints</span>
-<span class="n">initial_dris</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">trajectory</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">cage_history</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">dream</span><span class="p">(</span><span class="n">horizon</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<section id="object-pushing-simulation">
+<h2>Object Pushing (Simulation)<a class="headerlink" href="#object-pushing-simulation" title="Link to this heading">#</a></h2>
+<p>Multi-object herding with orbital cage constraints in parallel ManiSkill environments.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/object_pushing/main.py
 </pre></div>
 </div>
 </section>
-<section id="execution-flow">
-<h2>Execution Flow<a class="headerlink" href="#execution-flow" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><strong>Initialize</strong>: Backend → TSIP → Cage → Solver → ManiDreamsEnv</p></li>
-<li><p><strong>Plan</strong> (<code class="docutils literal notranslate"><span class="pre">dream()</span></code> loop):</p>
-<ul class="simple">
-<li><p>Update time-varying cage position</p></li>
-<li><p>Generate N candidate actions</p></li>
-<li><p>Predict outcomes in parallel (TSIP)</p></li>
-<li><p>Evaluate costs and validate constraints (Cage)</p></li>
-<li><p>Select best valid action</p></li>
-<li><p>Execute and repeat</p></li>
-</ul>
-</li>
-<li><p><strong>Execute</strong> (optional): Replay planned actions on an independent executor environment</p></li>
-</ol>
+<section id="object-pushing-diffusion-world-model">
+<h2>Object Pushing (Diffusion World Model)<a class="headerlink" href="#object-pushing-diffusion-world-model" title="Link to this heading">#</a></h2>
+<p>Cage-constrained planning using a learned diffusion world model. Requires downloading model weights (see <a class="reference internal" href="installation.html"><span class="std std-doc">Model Weights</span></a>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/object_pushing/main_pixel.py
+</pre></div>
+</div>
+<p>With iterative feedback loop between diffusion planning and real execution:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/object_pushing/main_pixel_feedback.py
+</pre></div>
+</div>
 </section>
-<section id="what-s-next">
-<h2>What’s Next<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong><a class="reference internal" href="why_manidreams.html"><span class="std std-doc">Why ManiDreams?</span></a></strong> — Architecture overview, design philosophy, and general pipeline</p></li>
-<li><p><strong><a class="reference internal" href="dris.html"><span class="std std-doc">Core Concepts</span></a></strong> — DRIS, Cage Constraints, TSIP, Solvers</p></li>
-<li><p><strong><a class="reference internal" href="supported_tasks.html"><span class="std std-doc">Tasks</span></a></strong> — Supported tasks and how to add your own</p></li>
-<li><p><strong><a class="reference internal" href="api/index.html"><span class="std std-doc">API Reference</span></a></strong> — Auto-generated documentation from source code</p></li>
-</ul>
+<section id="object-picking">
+<h2>Object Picking<a class="headerlink" href="#object-picking" title="Link to this heading">#</a></h2>
+<p>MPPI-based trajectory optimization with 3D cage constraints for pick-and-place.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/object_picking/main.py
+</pre></div>
+</div>
+</section>
+<section id="object-catching">
+<h2>Object Catching<a class="headerlink" href="#object-catching" title="Link to this heading">#</a></h2>
+<p>Plate-based ball catching with optional CAGE enhancement.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baseline (direct policy)</span>
+python<span class="w"> </span>examples/tasks/object_catching/main.py<span class="w"> </span>--num_samples<span class="w"> </span><span class="m">0</span>
+
+<span class="c1"># CAGE mode (8 candidate actions, 16 DRIS copies)</span>
+python<span class="w"> </span>examples/tasks/object_catching/main.py<span class="w"> </span>--num_samples<span class="w"> </span><span class="m">8</span><span class="w"> </span>--num_objs_tsip<span class="w"> </span><span class="m">16</span>
+</pre></div>
+</div>
+</section>
+<section id="maniskill-default-tasks">
+<h2>ManiSkill Default Tasks<a class="headerlink" href="#maniskill-default-tasks" title="Link to this heading">#</a></h2>
+<p>PushCube, PickCube, and PushT with PPO policies and optional CAGE enhancement.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/maniskill_defaults/main.py<span class="w"> </span>--task<span class="w"> </span>PushCube-v1
+python<span class="w"> </span>examples/tasks/maniskill_defaults/main.py<span class="w"> </span>--task<span class="w"> </span>PickCube-v1
+python<span class="w"> </span>examples/tasks/maniskill_defaults/main.py<span class="w"> </span>--task<span class="w"> </span>PushT-v0
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--num_samples</span> <span class="pre">0</span></code> for baseline (direct policy) or <code class="docutils literal notranslate"><span class="pre">--num_samples</span> <span class="pre">16</span></code> for CAGE mode.</p>
+<hr class="docutils" />
+<p>For detailed task descriptions and component configurations, see <a class="reference internal" href="runnable_examples.html"><span class="std std-doc">Runnable Examples</span></a> and <a class="reference internal" href="maniskill_defaults.html"><span class="std std-doc">ManiSkill Defaults</span></a>. To create your own task, see <a class="reference internal" href="custom_tasks.html"><span class="std std-doc">Custom Tasks</span></a>.</p>
 </section>
 </section>
 
@@ -484,9 +463,11 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-example">Minimal Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-flow">Execution Flow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">What’s Next</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-simulation">Object Pushing (Simulation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-diffusion-world-model">Object Pushing (Diffusion World Model)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-picking">Object Picking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-catching">Object Catching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maniskill-default-tasks">ManiSkill Default Tasks</a></li>
 </ul>
   </nav></div>
 

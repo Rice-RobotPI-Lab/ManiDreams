@@ -49,11 +49,11 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'zeroshot_real2sim';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'real2sim_demo';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API Reference" href="api/index.html" />
-    <link rel="prev" title="Custom Tasks Guide" href="custom_tasks.html" />
+    <link rel="next" title="Custom Tasks Guide" href="custom_tasks.html" />
+    <link rel="prev" title="ManiSkill Defaults" href="maniskill_defaults.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -172,9 +172,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="supported_tasks.html">Supported Tasks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="custom_tasks.html">Custom Tasks Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runnable_examples.html">Runnable Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maniskill_defaults.html">ManiSkill Defaults</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Zero-shot Real-to-Sim Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_tasks.html">Custom Tasks Guide</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -261,7 +262,7 @@
       
       
       
-      <li><a href="_sources/zeroshot_real2sim.md" target="_blank"
+      <li><a href="_sources/real2sim_demo.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -380,7 +381,6 @@
   <section id="zero-shot-real-to-sim-demo">
 <h1>Zero-shot Real-to-Sim Demo<a class="headerlink" href="#zero-shot-real-to-sim-demo" title="Link to this heading">#</a></h1>
 <p>Real-time perception-to-simulation: detect a real object via stereo camera, build a domain-randomized Newton physics simulation, and interact via a browser-based UI.</p>
-<p><a class="reference internal" href="#index.html#dris-real2sim"><span class="xref myst">Demo videos on project page →</span></a></p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>This demo combines:</p>
@@ -560,7 +560,7 @@ python<span class="w"> </span>examples/tasks/zeroshot_real2sim_demo/main.py
 </tbody>
 </table>
 </div>
-<p>The demo uses <strong>no Solver or Cage</strong> — it is a teleop demo. To add autonomous planning, connect a Solver + Cage to the existing TSIP, as shown in the <a class="reference internal" href="supported_tasks.html#object-pushing-simulation"><span class="std std-ref">object pushing example</span></a>.</p>
+<p>The demo uses <strong>no Solver or Cage</strong> — it is a teleop demo. To add autonomous planning, connect a Solver + Cage to the existing TSIP, as shown in the <a class="reference internal" href="runnable_examples.html#object-pushing-simulation"><span class="std std-ref">object pushing example</span></a>.</p>
 </section>
 </section>
 
@@ -576,20 +576,20 @@ python<span class="w"> </span>examples/tasks/zeroshot_real2sim_demo/main.py
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="custom_tasks.html"
+       href="maniskill_defaults.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Custom Tasks Guide</p>
+        <p class="prev-next-title">ManiSkill Defaults</p>
       </div>
     </a>
     <a class="right-next"
-       href="api/index.html"
+       href="custom_tasks.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">API Reference</p>
+        <p class="prev-next-title">Custom Tasks Guide</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

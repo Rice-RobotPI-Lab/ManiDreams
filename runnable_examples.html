@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Supported Tasks &#8212; ManiDreams</title>
+    <title>Runnable Examples &#8212; ManiDreams</title>
   
   
   
@@ -49,10 +49,10 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'supported_tasks';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'runnable_examples';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Custom Tasks Guide" href="custom_tasks.html" />
+    <link rel="next" title="ManiSkill Defaults" href="maniskill_defaults.html" />
     <link rel="prev" title="Solvers" href="solvers.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -172,9 +172,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Supported Tasks</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Runnable Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maniskill_defaults.html">ManiSkill Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real2sim_demo.html">Zero-shot Real-to-Sim Demo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom_tasks.html">Custom Tasks Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zeroshot_real2sim.html">Zero-shot Real-to-Sim Demo</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -261,7 +262,7 @@
       
       
       
-      <li><a href="_sources/supported_tasks.md" target="_blank"
+      <li><a href="_sources/runnable_examples.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -337,7 +338,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Supported Tasks</h1>
+    <h1>Runnable Examples</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -347,15 +348,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-example-tasks">Running Example Tasks</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maniskill-default-tasks">ManiSkill Default Tasks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-catching">Object Catching</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-simulation">Object Pushing (Simulation)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-learned-world-model">Object Pushing (Learned World Model)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-picking">Object Picking</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-shot-real-to-sim-demo">Zero-shot Real-to-Sim Demo</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-simulation">Object Pushing (Simulation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-learned-world-model">Object Pushing (Learned World Model)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-catching">Object Catching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-picking">Object Picking</a></li>
 </ul>
             </nav>
         </div>
@@ -367,134 +363,185 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="supported-tasks">
-<h1>Supported Tasks<a class="headerlink" href="#supported-tasks" title="Link to this heading">#</a></h1>
-<p>ManiDreams includes six task categories demonstrating different aspects of the framework:</p>
+  <section id="runnable-examples">
+<h1>Runnable Examples<a class="headerlink" href="#runnable-examples" title="Link to this heading">#</a></h1>
+<p>Four manipulation tasks demonstrating different cage, solver, and TSIP configurations.</p>
+<hr class="docutils" />
+<section id="object-pushing-simulation">
+<span id="id1"></span><h2>Object Pushing (Simulation)<a class="headerlink" href="#object-pushing-simulation" title="Link to this heading">#</a></h2>
+<p>Multi-object herding with orbital cage constraints. 64 polygon objects are pushed along a circular trajectory using 16 parallel ManiSkill environments for action evaluation.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Task</p></th>
-<th class="head"><p>Environment</p></th>
-<th class="head"><p>Cage</p></th>
-<th class="head"><p>Solver</p></th>
-<th class="head"><p>TSIP</p></th>
-<th class="head"><p>Key Demonstration</p></th>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Implementation</p></th>
+<th class="head"><p>Details</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Object Pushing (sim)</p></td>
-<td><p>Custom 64-object ManiSkill</p></td>
-<td><p>CircularCage</p></td>
-<td><p>GeometricOptimizer</p></td>
-<td><p>SimulationBasedTSIP</p></td>
-<td><p>Multi-object herding with orbital cage</p></td>
+<tr class="row-even"><td><p>TSIP Backend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PushBackend</span></code></p></td>
+<td><p>ManiSkill, 16 parallel envs, <code class="docutils literal notranslate"><span class="pre">pd_joint_delta_pos</span></code> control</p></td>
 </tr>
-<tr class="row-odd"><td><p>Object Pushing (learned)</p></td>
-<td><p>Diamond world model</p></td>
-<td><p>CircularPixelCage</p></td>
-<td><p>PixelOptimizer</p></td>
-<td><p>LearningBasedTSIP</p></td>
-<td><p>Image-based caging with learned dynamics</p></td>
+<tr class="row-odd"><td><p>TSIP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SimulationBasedTSIP</span></code></p></td>
+<td><p>Simulation-based forward prediction</p></td>
 </tr>
-<tr class="row-even"><td><p>Object Catching</p></td>
-<td><p>PlateCatch-v1 ManiSkill</p></td>
-<td><p>PlateCage</p></td>
-<td><p>PolicySampler (CAGE)</p></td>
-<td><p>SimulationBasedTSIP</p></td>
-<td><p>RL + CAGE with 6D offsets</p></td>
+<tr class="row-even"><td><p>Cage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CircularCage</span></code></p></td>
+<td><p>Orbital motion (radius=0.28, orbit_radius=0.2, orbit_speed=0.1)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Object Picking</p></td>
-<td><p>Custom PickEnv ManiSkill</p></td>
-<td><p>Geometric3DCage</p></td>
-<td><p>MPPIOptimizer</p></td>
-<td><p>SimulationBasedTSIP</p></td>
-<td><p>MPPI planning + plan-then-execute</p></td>
+<tr class="row-odd"><td><p>Solver</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GeometricOptimizer</span></code></p></td>
+<td><p>Enumerates 16 discrete push directions</p></td>
 </tr>
-<tr class="row-even"><td><p>ManiSkill Defaults</p></td>
-<td><p>PushCube/PickCube/PushT</p></td>
-<td><p>DRISCage</p></td>
-<td><p>PolicySampler (CAGE)</p></td>
-<td><p>SimulationBasedTSIP</p></td>
-<td><p>DRIS uncertainty-aware evaluation</p></td>
+<tr class="row-even"><td><p>Sampler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DiscreteSampler</span></code></p></td>
+<td><p>All actions evaluated in parallel</p></td>
 </tr>
-<tr class="row-odd"><td><p>Zero-shot Real2Sim</p></td>
-<td><p>D415 + Newton XPBD</p></td>
-<td><p>— (teleop)</p></td>
-<td><p>— (teleop)</p></td>
-<td><p>NewtonBackend</p></td>
-<td><p>Real-time perception → domain-randomized sim</p></td>
+<tr class="row-odd"><td><p>Executor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PushingTaskExecutor</span></code></p></td>
+<td><p>Independent single-object YCB environment</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Each task can be run in <strong>baseline mode</strong> (direct policy output, no CAGE) or <strong>CAGE mode</strong> (parallel evaluation with constraint selection) by changing the <code class="docutils literal notranslate"><span class="pre">--num_samples</span></code> argument.</p>
-<hr class="docutils" />
-<section id="running-example-tasks">
-<h2>Running Example Tasks<a class="headerlink" href="#running-example-tasks" title="Link to this heading">#</a></h2>
-<section id="maniskill-default-tasks">
-<span id="id1"></span><h3>ManiSkill Default Tasks<a class="headerlink" href="#maniskill-default-tasks" title="Link to this heading">#</a></h3>
-<p>PushCube, PickCube, PushT with PPO policies and optional CAGE enhancement. <a class="reference internal" href="#index.html#example-maniskill-defaults"><span class="xref myst">Demo videos →</span></a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>ManiDreams/
-
-<span class="c1"># Baseline mode — direct PPO policy, no CAGE</span>
-python<span class="w"> </span>examples/tasks/maniskill_defaults/main.py<span class="w"> </span>--task<span class="w"> </span>PushCube-v1
-
-<span class="c1"># CAGE mode — 8 candidate actions, 4 DRIS copies per eval env</span>
-python<span class="w"> </span>examples/tasks/maniskill_defaults/main.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--task<span class="w"> </span>PushCube-v1<span class="w"> </span>--num_samples<span class="w"> </span><span class="m">8</span><span class="w"> </span>--n_dris_copies<span class="w"> </span><span class="m">4</span>
-
-<span class="c1"># With custom parameters</span>
-python<span class="w"> </span>examples/tasks/maniskill_defaults/main.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--task<span class="w"> </span>PickCube-v1<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--num_samples<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--n_dris_copies<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--lambda_var<span class="w"> </span><span class="m">0</span>.2<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--pose_noise<span class="w"> </span><span class="m">0</span>.05<span class="w"> </span><span class="m">0</span>.05<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="m">0</span>.1
-</pre></div>
-</div>
-<p>Checkpoints are auto-detected from <code class="docutils literal notranslate"><span class="pre">examples/samplers/maniskill_defaults/ckpts/</span></code>. Use <code class="docutils literal notranslate"><span class="pre">--checkpoint</span> <span class="pre">/path/to/model.pt</span></code> to override.</p>
-</section>
-<section id="object-catching">
-<span id="id2"></span><h3>Object Catching<a class="headerlink" href="#object-catching" title="Link to this heading">#</a></h3>
-<p>Plate-based ball catching with optional CAGE enhancement. <a class="reference internal" href="#index.html#example-catching"><span class="xref myst">Demo video →</span></a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baseline mode</span>
-python<span class="w"> </span>examples/tasks/object_catching/main.py<span class="w"> </span>--num_samples<span class="w"> </span><span class="m">0</span>
-
-<span class="c1"># CAGE mode with 8 samples, 16 DRIS copies per TSIP env</span>
-python<span class="w"> </span>examples/tasks/object_catching/main.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--num_samples<span class="w"> </span><span class="m">8</span><span class="w"> </span>--num_objs_tsip<span class="w"> </span><span class="m">16</span>
-</pre></div>
-</div>
-</section>
-<section id="object-pushing-simulation">
-<span id="id3"></span><h3>Object Pushing (Simulation)<a class="headerlink" href="#object-pushing-simulation" title="Link to this heading">#</a></h3>
-<p>Multi-object herding with orbital cage constraints in parallel ManiSkill environments. <a class="reference internal" href="#index.html#example-pushing-sim"><span class="xref myst">Demo video →</span></a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/object_pushing/main.py
 </pre></div>
 </div>
 </section>
 <section id="object-pushing-learned-world-model">
-<span id="id4"></span><h3>Object Pushing (Learned World Model)<a class="headerlink" href="#object-pushing-learned-world-model" title="Link to this heading">#</a></h3>
-<p>Cage-constrained planning using a learned diffusion world model. <a class="reference internal" href="#index.html#example-pushing-learned"><span class="xref myst">Demo video →</span></a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/object_pushing/main_pixel.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--model-dir<span class="w"> </span>/path/to/diamond_model<span class="w"> </span>--max-steps<span class="w"> </span><span class="m">500</span>
+<span id="id2"></span><h2>Object Pushing (Learned World Model)<a class="headerlink" href="#object-pushing-learned-world-model" title="Link to this heading">#</a></h2>
+<p>Cage-constrained planning in pixel space using a Diamond diffusion world model as TSIP. The cage operates on rendered images rather than state vectors.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Implementation</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TSIP Backend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DiffusionBackend</span></code></p></td>
+<td><p>Diamond world model (<code class="docutils literal notranslate"><span class="pre">push16.pt</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>TSIP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LearningBasedTSIP</span></code></p></td>
+<td><p>Learned dynamics in pixel space</p></td>
+</tr>
+<tr class="row-even"><td><p>Cage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CircularPixelCage</span></code></p></td>
+<td><p>Pixel-space circular constraint (radius=22px, orbit_radius=42px)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Solver</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PixelOptimizer</span></code></p></td>
+<td><p>Pixel-space distance optimization</p></td>
+</tr>
+<tr class="row-even"><td><p>Sampler</p></td>
+<td><p>Built into solver</p></td>
+<td><p>16 candidate actions</p></td>
+</tr>
+<tr class="row-odd"><td><p>Executor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PushingTaskExecutor</span></code></p></td>
+<td><p>Independent single-object YCB environment</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/object_pushing/main_pixel.py
+</pre></div>
+</div>
+<p>With iterative feedback loop (re-encodes real observations back into the diffusion model):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/object_pushing/main_pixel_feedback.py
+</pre></div>
+</div>
+</section>
+<section id="object-catching">
+<span id="id3"></span><h2>Object Catching<a class="headerlink" href="#object-catching" title="Link to this heading">#</a></h2>
+<p>A Franka arm with a plate end-effector catches falling balls. The policy sampler generates candidate actions from a trained RL policy distribution, and CAGE selects the best one.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Implementation</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TSIP Backend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CatchBackend</span></code></p></td>
+<td><p>ManiSkill <code class="docutils literal notranslate"><span class="pre">PlateCatch-v1</span></code>, 16 DRIS copies per env</p></td>
+</tr>
+<tr class="row-odd"><td><p>TSIP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SimulationBasedTSIP</span></code></p></td>
+<td><p>Parallel rollout for action evaluation</p></td>
+</tr>
+<tr class="row-even"><td><p>Cage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PlateCage</span></code></p></td>
+<td><p>Distance + velocity cost (plate_radius=0.12)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Solver</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PolicySampler</span></code></p></td>
+<td><p>Samples from RL policy distribution (8 candidates)</p></td>
+</tr>
+<tr class="row-even"><td><p>Sampler</p></td>
+<td><p>Integrated in <code class="docutils literal notranslate"><span class="pre">PolicySampler</span></code></p></td>
+<td><p>Stochastic sampling with action chunking (horizon=8)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Executor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CatchingTaskExecutor</span></code></p></td>
+<td><p>Single environment with falling balls</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baseline (direct policy, no CAGE)</span>
+python<span class="w"> </span>examples/tasks/object_catching/main.py<span class="w"> </span>--num_samples<span class="w"> </span><span class="m">0</span>
+
+<span class="c1"># CAGE mode</span>
+python<span class="w"> </span>examples/tasks/object_catching/main.py<span class="w"> </span>--num_samples<span class="w"> </span><span class="m">8</span><span class="w"> </span>--num_objs_tsip<span class="w"> </span><span class="m">16</span>
 </pre></div>
 </div>
 </section>
 <section id="object-picking">
-<span id="id5"></span><h3>Object Picking<a class="headerlink" href="#object-picking" title="Link to this heading">#</a></h3>
-<p>MPPI-based trajectory optimization with 3D cage constraints for pick-and-place. <a class="reference internal" href="#index.html#example-picking"><span class="xref myst">Demo video →</span></a></p>
+<span id="id4"></span><h2>Object Picking<a class="headerlink" href="#object-picking" title="Link to this heading">#</a></h2>
+<p>MPPI-based trajectory optimization for pick-and-place. A 3D cage defines a time-varying trajectory of waypoints, and MPPI samples action perturbations to follow it.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Implementation</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TSIP Backend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PickBackend</span></code></p></td>
+<td><p>ManiSkill, 10 parallel envs, 16 target objects</p></td>
+</tr>
+<tr class="row-odd"><td><p>TSIP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SimulationBasedTSIP</span></code></p></td>
+<td><p>Multi-step rollout (horizon=3)</p></td>
+</tr>
+<tr class="row-even"><td><p>Cage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Geometric3DCage</span></code></p></td>
+<td><p>50 waypoints, radius=0.15, variance-based cost</p></td>
+</tr>
+<tr class="row-odd"><td><p>Solver</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MPPIOptimizer</span></code></p></td>
+<td><p>10 samples, 3 elites, 2 iterations, temperature=1.0</p></td>
+</tr>
+<tr class="row-even"><td><p>Sampler</p></td>
+<td><p>Gaussian (built into MPPI)</p></td>
+<td><p>Perturbation sampling around mean trajectory</p></td>
+</tr>
+<tr class="row-odd"><td><p>Executor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PickingTaskExecutor</span></code></p></td>
+<td><p>Plan-then-execute with full trajectory replay</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/object_picking/main.py
 </pre></div>
 </div>
-</section>
-<section id="zero-shot-real-to-sim-demo">
-<span id="zero-shot-real2sim"></span><h3>Zero-shot Real-to-Sim Demo<a class="headerlink" href="#zero-shot-real-to-sim-demo" title="Link to this heading">#</a></h3>
-<p>Real-time object detection → Newton physics simulation with domain randomization. <a class="reference internal" href="#index.html#dris-real2sim"><span class="xref myst">Demo videos →</span></a></p>
-<p>This demo requires additional setup (RealSense D415, Fast-FoundationStereoPose, Newton). See the full <a class="reference internal" href="zeroshot_real2sim.html"><span class="std std-doc">setup tutorial</span></a>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/tasks/zeroshot_real2sim_demo/main.py
-</pre></div>
-</div>
-</section>
 </section>
 </section>
 
@@ -519,11 +566,11 @@ python<span class="w"> </span>examples/tasks/object_catching/main.py<span class=
       </div>
     </a>
     <a class="right-next"
-       href="custom_tasks.html"
+       href="maniskill_defaults.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Custom Tasks Guide</p>
+        <p class="prev-next-title">ManiSkill Defaults</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -545,15 +592,10 @@ python<span class="w"> </span>examples/tasks/object_catching/main.py<span class=
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-example-tasks">Running Example Tasks</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maniskill-default-tasks">ManiSkill Default Tasks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-catching">Object Catching</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-simulation">Object Pushing (Simulation)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-learned-world-model">Object Pushing (Learned World Model)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-picking">Object Picking</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-shot-real-to-sim-demo">Zero-shot Real-to-Sim Demo</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-simulation">Object Pushing (Simulation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-pushing-learned-world-model">Object Pushing (Learned World Model)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-catching">Object Catching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-picking">Object Picking</a></li>
 </ul>
   </nav></div>
 

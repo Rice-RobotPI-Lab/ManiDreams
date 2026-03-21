@@ -47,9 +47,10 @@ solvers
 :maxdepth: 2
 :caption: Tasks
 
-supported_tasks
+runnable_examples
+maniskill_defaults
+real2sim_demo
 custom_tasks
-zeroshot_real2sim
 :::
 
 :::{toctree}

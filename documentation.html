@@ -173,9 +173,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="supported_tasks.html">Supported Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runnable_examples.html">Runnable Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maniskill_defaults.html">ManiSkill Defaults</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real2sim_demo.html">Zero-shot Real-to-Sim Demo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom_tasks.html">Custom Tasks Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zeroshot_real2sim.html">Zero-shot Real-to-Sim Demo</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -370,9 +371,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#minimal-example">Minimal Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#execution-flow">Execution Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html#what-s-next">What’s Next</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#object-pushing-simulation">Object Pushing (Simulation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#object-pushing-diffusion-world-model">Object Pushing (Diffusion World Model)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#object-picking">Object Picking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#object-catching">Object Catching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#maniskill-default-tasks">ManiSkill Default Tasks</a></li>
 </ul>
 </li>
 </ul>
@@ -439,8 +442,28 @@
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="supported_tasks.html">Supported Tasks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="supported_tasks.html#running-example-tasks">Running Example Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runnable_examples.html">Runnable Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="runnable_examples.html#object-pushing-simulation">Object Pushing (Simulation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runnable_examples.html#object-pushing-learned-world-model">Object Pushing (Learned World Model)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runnable_examples.html#object-catching">Object Catching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runnable_examples.html#object-picking">Object Picking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maniskill_defaults.html">ManiSkill Defaults</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="maniskill_defaults.html#common-architecture">Common Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maniskill_defaults.html#pushcube">PushCube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maniskill_defaults.html#pickcube">PickCube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maniskill_defaults.html#pusht">PushT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maniskill_defaults.html#key-arguments">Key Arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="real2sim_demo.html">Zero-shot Real-to-Sim Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="real2sim_demo.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real2sim_demo.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real2sim_demo.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real2sim_demo.html#running-the-demo">Running the Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real2sim_demo.html#usage-guide">Usage Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real2sim_demo.html#architecture">Architecture</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="custom_tasks.html">Custom Tasks Guide</a><ul>
@@ -449,15 +472,6 @@
 <li class="toctree-l2"><a class="reference internal" href="custom_tasks.html#step-3-wire-them-together">Step 3: Wire Them Together</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_tasks.html#switching-to-a-learned-world-model">Switching to a Learned World Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_tasks.html#using-dris-for-uncertainty-aware-evaluation">Using DRIS for Uncertainty-Aware Evaluation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="zeroshot_real2sim.html">Zero-shot Real-to-Sim Demo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="zeroshot_real2sim.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zeroshot_real2sim.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zeroshot_real2sim.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zeroshot_real2sim.html#running-the-demo">Running the Demo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zeroshot_real2sim.html#usage-guide">Usage Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zeroshot_real2sim.html#architecture">Architecture</a></li>
 </ul>
 </li>
 </ul>
