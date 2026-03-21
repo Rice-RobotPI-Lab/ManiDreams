@@ -151,7 +151,7 @@ def main():
     """
     parser = argparse.ArgumentParser(description="ManiDreams Object Pushing - Diamond Replication")
     parser.add_argument('--model-dir', type=Path,
-                       default=Path('/home/vector/Research/OpenCage/diamond/models/push16'),
+                       default=Path(__file__).resolve().parent.parent.parent / 'physics' / 'push_backend_learned' / 'models' / 'push16',
                        help='Path to DIAMOND model directory')
     parser.add_argument('--max-steps', type=int, default=500,
                        help='Maximum timesteps (Diamond default: 500)')
@@ -171,6 +171,10 @@ def main():
         level=logging.DEBUG if args.verbose else logging.INFO,
         format='%(name)s - %(levelname)s - %(message)s'
     )
+
+    ckpt = args.model_dir / 'model' / 'push16.pt'
+    if not ckpt.exists():
+        parser.error(f"Model checkpoint not found at {ckpt}. Download push16.pt from https://drive.google.com/file/d/1OBTPrz3g2i7OzF2M0-Zdt8ISFGINJhnG/view?usp=sharing")
 
     logger.info("=" * 60)
     logger.info("ManiDreams Object Pushing - Diamond Replication")

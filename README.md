@@ -56,6 +56,14 @@ trajectory, actions, cage_history = env.dream(horizon=50)
 
 See `examples/tasks/` for complete runnable scripts (pushing, catching, picking).
 
+## Model Weights
+
+The pixel-based pushing task requires a diffusion model checkpoint. Download `push16.pt` from [Google Drive](https://drive.google.com/file/d/1OBTPrz3g2i7OzF2M0-Zdt8ISFGINJhnG/view?usp=sharing) and place it at:
+
+```
+examples/physics/push_backend_learned/models/push16/model/push16.pt
+```
+
 ## Documentation
 
 Full documentation is available at the [docs site](https://rice-robotpi-lab.github.io/ManiDreams/), including:

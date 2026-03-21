@@ -1,0 +1,105 @@
+defaults:
+  - _self_
+  - env: csgo
+  - agent: csgo
+  - world_model_env: fast
+
+hydra:
+  job:
+    chdir: True
+
+wandb:
+  mode: disabled
+  project: null
+  entity: null
+  name: null
+  group: null
+  tags: null
+  notes: null
+
+initialization:
+  path_to_ckpt: null
+  load_denoiser: True
+  load_rew_end_model: True
+  load_actor_critic: True
+
+common:
+  devices: all  # int, list of int, cpu, or all 
+  seed: null
+  resume: False # do not modify, set by scripts/resume.sh only.
+
+checkpointing:
+  save_agent_every: 5
+  num_to_keep: 11  # number of checkpoints to keep, use null to disable
+
+collection:
+  train:
+    num_envs: 1
+    epsilon: 0.01
+    num_steps_total: 100000
+    first_epoch:
+      min: 5000
+      max: 10000  # null: no maximum
+      threshold_rew: 10
+    steps_per_epoch: 100
+  test:
+    num_envs: 1
+    num_episodes: 4
+    epsilon: 0.0
+    num_final_episodes: 100
+
+static_dataset:
+  path: ${env.path_data_low_res}
+  ignore_sample_weights: True
+
+training:
+  should: True
+  num_final_epochs: 1500
+  cache_in_ram: False
+  num_workers_data_loaders: 4
+  model_free: False # if True, turn off world_model training and RL in imagination
+  compile_wm: False
+
+evaluation:
+  should: True
+  every: 20
+
+denoiser:
+  training:
+    num_autoregressive_steps: 4
+    start_after_epochs: 0
+    steps_first_epoch: 100
+    steps_per_epoch: 100
+    sample_weights: null
+    batch_size: 32
+    grad_acc_steps: 6
+    lr_warmup_steps: 100
+    max_grad_norm: 10.0
+
+  optimizer:
+    lr: 1e-4
+    weight_decay: 1e-2
+    eps: 1e-8
+  
+  sigma_distribution: # log normal distribution for sigma during training
+    _target_: models.diffusion.SigmaDistributionConfig
+    loc: -1.2
+    scale: 1.2
+    sigma_min: 2e-3
+    sigma_max: 20
+
+upsampler:
+  training:
+    num_autoregressive_steps: 1
+    start_after_epochs: 0
+    steps_first_epoch: 400
+    steps_per_epoch: 400
+    sample_weights: null
+    batch_size: 8
+    grad_acc_steps: 1
+    lr_warmup_steps: 100
+    max_grad_norm: 10.0
+
+  optimizer: ${denoiser.optimizer}
+  sigma_distribution: ${denoiser.sigma_distribution}
+

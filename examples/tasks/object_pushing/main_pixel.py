@@ -60,9 +60,10 @@ def main():
     7. Adds time.sleep(1.0/15) for FPS control
     """
     parser = argparse.ArgumentParser(description="ManiDreams Object Pushing - Diamond Replication")
+    default_model_dir = Path(__file__).resolve().parent.parent.parent / 'physics' / 'push_backend_learned' / 'models' / 'push16'
     parser.add_argument('--model-dir', type=Path,
-                       default=None,
-                       help='Path to DIAMOND model directory (required)')
+                       default=default_model_dir,
+                       help='Path to DIAMOND model directory')
     parser.add_argument('--max-steps', type=int, default=500,
                        help='Maximum timesteps (Diamond default: 500)')
     parser.add_argument('--no-realtime', action='store_true', default=False,
@@ -82,8 +83,9 @@ def main():
         format='%(name)s - %(levelname)s - %(message)s'
     )
 
-    if args.model_dir is None:
-        parser.error("--model-dir is required. Example: --model-dir /path/to/diamond/models/push16")
+    ckpt = args.model_dir / 'model' / 'push16.pt'
+    if not ckpt.exists():
+        parser.error(f"Model checkpoint not found at {ckpt}. Download push16.pt from https://drive.google.com/file/d/1OBTPrz3g2i7OzF2M0-Zdt8ISFGINJhnG/view?usp=sharing")
 
     logger.info("=" * 60)
     logger.info("ManiDreams Object Pushing - Diamond Replication")
