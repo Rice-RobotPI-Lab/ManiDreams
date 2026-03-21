@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ManiDreams: An Open-Source Library for Robust Object Manipulation via Uncertainty-aware Task-specific Intuitive Physics">
+  <meta name="keywords" content="robotic manipulation, uncertainty-aware, intuitive physics, DRIS, TSIP, world model, motion planning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ManiDreams: Robust Object Manipulation via Uncertainty-aware Intuitive Physics</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <style>
+    body {
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .link-block a {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .publication-title {
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    .publication-authors {
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    .publication-authors a {
+      color: hsl(204, 86%, 53%) !important;
+    }
+
+    .publication-authors a:hover {
+      text-decoration: underline;
+    }
+
+    .author-block {
+      display: inline-block;
+    }
+
+    .publication-venue {
+      color: #555;
+      width: fit-content;
+      font-weight: bold;
+    }
+
+    /* Teaser */
+    .teaser .hero-body {
+      padding-top: 0;
+      padding-bottom: 3rem;
+    }
+
+    .teaser {
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    /* Placeholder for media not yet provided */
+    .media-placeholder {
+      background: #f0f0f0;
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #999;
+      font-size: 0.95rem;
+      min-height: 300px;
+    }
+
+    .media-placeholder .placeholder-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #bbb;
+    }
+
+    .media-placeholder.video-ph {
+      min-height: 220px;
+    }
+
+    .media-placeholder.figure-ph {
+      min-height: 350px;
+    }
+
+    .media-placeholder.table-ph {
+      min-height: 180px;
+    }
+
+    /* Concept cards */
+    .concept-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 0.85rem 1.1rem;
+    }
+
+    .concept-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .concept-card .concept-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .concept-card .concept-name {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .concept-card .concept-full-name {
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    .concept-card .concept-desc {
+      font-size: 0.92rem;
+      color: #444;
+      line-height: 1.55;
+    }
+
+    /* Video grid items */
+    .video-item {
+      text-align: center;
+    }
+
+    .video-item .video-label {
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 600;
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .video-item .video-desc {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.15rem;
+    }
+
+    /* Horizontal-scroll video gallery */
+    .dris-scroll-row {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 10px;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+    }
+    .dris-scroll-row:active { cursor: grabbing; }
+    .dris-scroll-row::-webkit-scrollbar { height: 6px; }
+    .dris-scroll-row::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+    .dris-video-cell {
+      flex: 0 0 260px;
+      scroll-snap-align: start;
+      text-align: center;
+    }
+    .dris-video-cell video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Footer */
+    .footer .icon-link {
+      font-size: 25px;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- HERO                                                              -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">ManiDreams: An Open-Source Library for Robust Object Manipulation via Uncertainty-aware Task-specific Intuitive Physics</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Gaotian Wang<sup>1</sup>,</span>
+            <span class="author-block">Kejia Ren<sup>1</sup>,</span>
+            <span class="author-block">Andrew S. Morgan<sup>2</sup>,</span>
+            <span class="author-block">Kaiyu Hang<sup>1</sup></span>
+          </div>
+          <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
+            <span class="author-block"><sup>1</sup>Rice University</span>
+            <span class="author-block"><sup>2</sup>Robotics and AI Institute</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Code Link (anonymous for double-blind) -->
+              <span class="link-block">
+                <a href="https://github.com/Rice-RobotPI-Lab/ManiDreams"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Documentation Link -->
+              <span class="link-block">
+                <a href="documentation.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-book"></i>
+                  </span>
+                  <span>Docs</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- TEASER / SPLASH FIGURE                                            -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="_static/media/splash.svg" alt="ManiDreams Splash Figure" style="width:100%; border-radius:10px;">
+      <h2 class="subtitle has-text-centered">
+        <b>ManiDreams</b> maintains a time-varying constraint (cage) around target objects,
+        sampling and evaluating candidate actions via parallel forward simulation for robust execution.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- ABSTRACT                                                          -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Dynamics models, whether simulators or learned world models, have long been central to robotic manipulation,
+            but most of these models focus on minimizing prediction error rather than confronting a more fundamental
+            challenge: real-world manipulation is <em>inherently</em> uncertain. We argue that robust manipulation under
+            uncertainty is fundamentally an <em>integration problem</em>: uncertainties must be represented, propagated,
+            and constrained within the planning loop, not merely suppressed during training.
+          </p>
+          <p>
+            We present and open-source <em>ManiDreams</em>, a modular framework for uncertainty-aware manipulation
+            planning over intuitive physics models that realizes this integration through composable abstractions for
+            distributional state representation, backend-agnostic dynamics prediction, and declarative constraint
+            specification for action optimization. The framework explicitly addresses three sources of uncertainty:
+            <em>perceptual</em>, <em>parametric</em>, and <em>structural</em>. It wraps any base policy with a
+            sample-predict-constrain loop that evaluates candidate actions against distributional outcomes, adding
+            robustness without retraining. Experiments on default ManiSkill tasks show that ManiDreams maintains robust
+            performance under various perturbations, where the RL baseline degrades significantly. Runnable examples on
+            pushing, picking, catching, and real world deployment demonstrate flexibility for applications across
+            different policies, optimizers, physics backends, and executors.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- PIPELINE FIGURE                                                   -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Pipeline</h2>
+    <img src="_static/media/ManiDreams_pipeline.svg" alt="ManiDreams Pipeline" style="width:100%; border-radius:10px;">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified" style="margin-top: 1rem;">
+          <p>
+            The cage-constrained planning pipeline: generate candidate actions &rarr; parallel forward
+            prediction via TSIP &rarr; cage evaluation &amp; validation &rarr; execute the best valid action.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- ARCHITECTURE & CORE CONCEPTS (double-column)                      -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Architecture &amp; Core Concepts</h2>
+
+    <div class="columns is-centered" style="margin-top: 1rem;">
+      <!-- Left column: Architecture figure -->
+      <div class="column is-5">
+        <img src="_static/media/arch.svg" alt="ManiDreams Architecture" style="width:100%; border-radius:10px;">
+        <p class="has-text-centered" style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;">
+          Three-layer modular architecture: abstract interfaces &rarr; concrete implementations &rarr; task-specific integrations.
+        </p>
+      </div>
+
+      <!-- Right column: 4 concept cards stacked -->
+      <div class="column is-7">
+        <div class="concept-card" style="margin-bottom: 0.75rem;">
+          <div class="concept-header">
+            <div class="concept-name" style="color: #4285F4;">DRIS</div>
+            <div class="concept-full-name">Domain-Randomized Instance Set</div>
+          </div>
+          <div class="concept-desc">
+            Universal state representation carrying observation data plus domain-randomization context.
+            Supports state vectors, images, point clouds, or any combination&mdash;decoupling observation
+            format from algorithms.
+          </div>
+        </div>
+        <div class="concept-card" style="margin-bottom: 0.75rem;">
+          <div class="concept-header">
+            <div class="concept-name" style="color: #5F6368;">TSIP</div>
+            <div class="concept-full-name">Task-Specific Intuitive Physics</div>
+          </div>
+          <div class="concept-desc">
+            Forward model predicting next state given current state and action. Supports
+            <em>simulation-based</em> (GPU-accelerated ManiSkill/SAPIEN) and
+            <em>learning-based</em> (diffusion world model) backends.
+          </div>
+        </div>
+        <div class="concept-card" style="margin-bottom: 0.75rem;">
+          <div class="concept-header">
+            <div class="concept-name" style="color: #EA4335;">Cage</div>
+            <div class="concept-full-name">Spatial Constraint Evaluator</div>
+          </div>
+          <div class="concept-desc">
+            Virtual boundary providing continuous cost evaluation (for ranking) and binary validation
+            (for constraint satisfaction). Supports time-varying parameters including deformation and custom trajectories.
+          </div>
+        </div>
+        <div class="concept-card">
+          <div class="concept-header">
+            <div class="concept-name" style="color: #FBBC04;">Solver</div>
+            <div class="concept-full-name">Action Selection via Sampling &amp; Optimization</div>
+          </div>
+          <div class="concept-desc">
+            Generates and evaluates candidate actions. Combines <em>samplers</em>
+            (PolicySampler, GaussianSampler) with <em>optimizers</em>
+            (MPPI, Geometric, MPC) to propose and refine actions under cage constraints.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- RUNNABLE EXAMPLES (3 videos)                                      -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Runnable Examples</h2>
+        <div class="content has-text-justified">
+          <p>
+            Cage-constrained manipulation across four tasks with different solver and TSIP configurations.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <!-- Object Pushing (sim) -->
+      <div class="column is-one-quarter video-item">
+        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+          <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/11.mp4" type="video/mp4">
+        </video>
+        <div class="video-label">Object Pushing</div>
+        <div class="video-desc">Simulation-based TSIP</div>
+      </div>
+      <!-- Object Pushing (learned) -->
+      <div class="column is-one-quarter video-item">
+        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+          <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/12.mp4" type="video/mp4">
+        </video>
+        <div class="video-label">Object Pushing</div>
+        <div class="video-desc">Learning-based TSIP</div>
+      </div>
+      <!-- Ball Catching -->
+      <div class="column is-one-quarter video-item">
+        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+          <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/13.mp4" type="video/mp4">
+        </video>
+        <div class="video-label">Ball Catching</div>
+        <div class="video-desc">RL policy sampler</div>
+      </div>
+      <!-- Card Picking -->
+      <div class="column is-one-quarter video-item">
+        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+          <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/14.mp4" type="video/mp4">
+        </video>
+        <div class="video-label">Card Picking</div>
+        <div class="video-desc">MPPI optimizer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- REAL ROBOT EXPERIMENTS (2 videos)                                 -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Real Robot Experiments</h2>
+        <div class="content has-text-justified">
+          <p>
+            Cage-constrained manipulation deployed on real hardware.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real Task 1 -->
+    <div class="columns is-centered">
+      <div class="column is-full video-item">
+        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+          <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/real1.mp4" type="video/mp4">
+        </video>
+        <div class="video-label">Random Object Picking from Clutter</div>
+        <div class="video-desc">Push-then-pick strategy with diffusion-based TSIP and real-time DRIS via SAM2</div>
+      </div>
+    </div>
+    <!-- Real Task 2 -->
+    <div class="columns is-centered">
+      <div class="column is-full video-item">
+        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+          <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/real2.mp4" type="video/mp4">
+        </video>
+        <div class="video-label">Flat Object Scooping from Clutter</div>
+        <div class="video-desc">Push-to-corner-then-scoop strategy with diffusion-based TSIP and real-time DRIS via SAM2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- DEFAULT MANISKILL TASKS (3 videos)                                -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Default ManiSkill Tasks</h2>
+        <div class="content has-text-justified">
+          <p>
+            Uncertainty-aware DRIS evaluation on standard ManiSkill benchmarks (top: simulation-based TSIP, bottom: executor).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <!-- PushCube -->
+      <div class="column video-item">
+        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+          <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/1.mp4" type="video/mp4">
+        </video>
+        <div class="video-label">PushCube</div>
+        <div class="video-desc">Push a cube to a target location</div>
+      </div>
+      <!-- PickCube -->
+      <div class="column video-item">
+        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+          <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/2.mp4" type="video/mp4">
+        </video>
+        <div class="video-label">PickCube</div>
+        <div class="video-desc">Pick up a cube and move to a goal position</div>
+      </div>
+      <!-- PushT -->
+      <div class="column video-item">
+        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+          <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/3.mp4" type="video/mp4">
+        </video>
+        <div class="video-label">PushT</div>
+        <div class="video-desc">Push a T-shaped block to a target pose</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- BENCHMARK RESULTS (single-column)                                 -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Benchmark Results</h2>
+    <img src="_static/media/Exp_1.svg" alt="Benchmark Results" style="width:100%; border-radius:10px;">
+    <p class="has-text-centered" style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;">
+      Comparison of cage-constrained methods against baselines across manipulation tasks.
+    </p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- ABLATION STUDY & COMPUTATION OVERHEAD (double-column)             -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered" style="margin-top: 1rem;">
+      <!-- Left: Ablation study tables -->
+      <div class="column is-half">
+        <h2 class="title is-3 has-text-centered">Ablation Study</h2>
+
+        <!-- DRIS instances -->
+        <table class="table is-bordered is-narrow is-fullwidth" style="font-size: 0.9rem;">
+          <thead>
+            <tr>
+              <th>DRIS instances <i>m</i></th>
+              <th>1</th>
+              <th>4</th>
+              <th><b>8</b></th>
+              <th>16</th>
+              <th>32</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Success rate (%)</td>
+              <td>58</td>
+              <td>72</td>
+              <td><b>82</b></td>
+              <td>85</td>
+              <td>86</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Solver samples -->
+        <table class="table is-bordered is-narrow is-fullwidth" style="font-size: 0.9rem;">
+          <thead>
+            <tr>
+              <th>Solver samples <i>N</i></th>
+              <th>1</th>
+              <th>4</th>
+              <th><b>8</b></th>
+              <th>16</th>
+              <th>32</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Success rate (%)</td>
+              <td>52</td>
+              <td>71</td>
+              <td><b>82</b></td>
+              <td>87</td>
+              <td>88</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Distribution width -->
+        <table class="table is-bordered is-narrow is-fullwidth" style="font-size: 0.9rem;">
+          <thead>
+            <tr>
+              <th>Distribution width</th>
+              <th colspan="2" class="has-text-centered">Narrow</th>
+              <th class="has-text-centered"><b>Medium</b></th>
+              <th colspan="2" class="has-text-centered">Wide</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Success rate (%)</td>
+              <td colspan="2" class="has-text-centered">74</td>
+              <td class="has-text-centered"><b>82</b></td>
+              <td colspan="2" class="has-text-centered">76</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Right: Computation overhead figure -->
+      <div class="column is-half">
+        <h2 class="title is-3 has-text-centered">Computation Overhead</h2>
+        <img src="_static/media/computing.svg" alt="Computation Overhead" style="width:100%; border-radius:10px;">
+        <p class="has-text-centered" style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;">
+          Wall-clock time and GPU memory overhead of cage-constrained planning across configurations.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- DRIS REAL2SIM (2×6 scrollable video grid)                         -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">DRIS Real2Sim</h2>
+        <div class="content has-text-justified">
+          <p>
+            Real-to-simulation transfer results using DRIS. Scroll or drag horizontally to view more.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 1: t1–t6 -->
+    <div class="dris-scroll-row">
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t1.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 1</div>
+      </div>
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t2.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 2</div>
+      </div>
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t3.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 3</div>
+      </div>
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t4.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 4</div>
+      </div>
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t5.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 5</div>
+      </div>
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t6.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 6</div>
+      </div>
+    </div>
+
+    <!-- Row 2: t7–t12 -->
+    <div class="dris-scroll-row" style="margin-top: 12px;">
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t7.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 7</div>
+      </div>
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t8.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 8</div>
+      </div>
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t9.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 9</div>
+      </div>
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t10.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 10</div>
+      </div>
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t11.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 11</div>
+      </div>
+      <div class="dris-video-cell">
+        <video autoplay controls muted loop playsinline><source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/t12.mp4" type="video/mp4"></video>
+        <div class="video-label">Task 12</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- FOOTER                                                            -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/Rice-RobotPI-Lab/ManiDreams">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            It borrows the source code of the <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page.
+            ManiDreams is released under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.
+          </p>
+          <p>
+            This work is supported by NSF-2240040.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Drag-to-scroll for horizontal video rows
+document.querySelectorAll('.dris-scroll-row').forEach(function(row) {
+  var isDown = false, startX, scrollLeft;
+  row.addEventListener('mousedown', function(e) {
+    isDown = true; startX = e.pageX - row.offsetLeft; scrollLeft = row.scrollLeft;
+  });
+  row.addEventListener('mouseleave', function() { isDown = false; });
+  row.addEventListener('mouseup', function() { isDown = false; });
+  row.addEventListener('mousemove', function(e) {
+    if (!isDown) return;
+    e.preventDefault();
+    row.scrollLeft = scrollLeft - (e.pageX - row.offsetLeft - startX);
+  });
+});
+</script>
+</body>
+</html>
