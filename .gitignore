@@ -60,11 +60,12 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# Sphinx documentation (source build artifacts)
-docs_src/_build/
-# Sphinx build cache in deployed docs (not needed for serving)
-docs/.doctrees/
-docs/.buildinfo
+# Sphinx documentation build output
+docs/_build/
+docs_build/
+
+# Video files (hosted on GitHub Releases)
+docs/_static/media/*.mp4
 
 # PyBuilder
 target/

@@ -3,7 +3,7 @@ include LICENSE
 include MANIFEST.in
 
 # Documentation
-recursive-include docs_src *.md *.rst
+recursive-include docs *.md *.rst
 
 # Examples
 recursive-include examples *.py *.md *.json *.pkl
