@@ -7,7 +7,7 @@
 
 **ManiDreams**: An Open-Source Library for Robust Object Manipulation via Uncertainty-aware Task-specific Intuitive Physics
 
-ManiDreams implements a three-layer modular architecture that separates abstract interfaces from concrete algorithm implementations and task-specific integrations. The framework enables cage-constrained action selection — where a virtual constraint (cage) bounds a Domain-Randomized Instance Set (DRIS) to prevent divergence — across diverse manipulation tasks, physics backends, and solver strategies.
+ManiDreams implements a three-layer modular architecture that separates abstract interfaces from concrete algorithm implementations and task-specific integrations. The framework enables cage-constrained action selection, where a virtual constraint (cage) bounds a Domain-Randomized Instance Set (DRIS) to prevent divergence, across diverse manipulation tasks, physics backends, and solver strategies.
 
 ```{raw} html
 <div style="display:flex;gap:0.75rem;margin:1rem 0;">
