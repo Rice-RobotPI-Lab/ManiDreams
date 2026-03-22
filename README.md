@@ -6,7 +6,9 @@
 
 ManiDreams: An Open-Source Library for Robust Object Manipulation via Uncertainty-aware World Models
 
+
 ## Overview
+<img width="1359" height="582" alt="ScreenShot_2026-03-22_104632_687" src="https://github.com/user-attachments/assets/600056d3-8c22-406b-a58a-9539d3dd7fe6" />
 
 ManiDreams implements a planning paradigm where a virtual constraint (cage) bounds object states during action selection. At each timestep, the framework generates candidate actions, predicts outcomes in parallel via a forward model (TSIP), evaluates them against cage constraints, and executes the best valid action.
 
@@ -41,7 +43,11 @@ python examples/tasks/object_pushing/main.py
 
 ### Object Pushing (Diffusion World Model)
 
-Cage-constrained planning using a learned diffusion world model. Requires downloading model weights (see [Model Weights](#model-weights)).
+Cage-constrained planning using a learned diffusion world model. Requires a diffusion model checkpoint. Download `push16.pt` from [Google Drive](https://drive.google.com/file/d/1OBTPrz3g2i7OzF2M0-Zdt8ISFGINJhnG/view?usp=sharing) and place it at:
+
+```
+examples/physics/push_backend_learned/models/push16/model/push16.pt
+```
 
 ```bash
 python examples/tasks/object_pushing/main_pixel.py
@@ -89,22 +95,13 @@ Use `--num_samples 0` for baseline (direct policy) or `--num_samples 16` for CAG
 
 Real-time object detection (D415 + stereo) with domain-randomized Newton physics simulation. See [setup tutorial](https://rice-robotpi-lab.github.io/ManiDreams/real2sim_demo.html) and [demo videos](https://rice-robotpi-lab.github.io/ManiDreams/index.html#dris-real2sim).
 
-## Model Weights
+## TODO
 
-The pixel-based pushing task requires a diffusion model checkpoint. Download `push16.pt` from [Google Drive](https://drive.google.com/file/d/1OBTPrz3g2i7OzF2M0-Zdt8ISFGINJhnG/view?usp=sharing) and place it at:
-
-```
-examples/physics/push_backend_learned/models/push16/model/push16.pt
-```
-
-## Documentation
-
-Full documentation is available at the [docs site](https://rice-robotpi-lab.github.io/ManiDreams/), including:
-
-- [Why ManiDreams?](https://rice-robotpi-lab.github.io/ManiDreams/why_manidreams.html) — Architecture and design principles
-- [Core Concepts](https://rice-robotpi-lab.github.io/ManiDreams/dris.html) — DRIS, Cage, TSIP, Solvers
-- [Runnable Examples](https://rice-robotpi-lab.github.io/ManiDreams/runnable_examples.html) — Object pushing, catching, picking, and more
-- [API Reference](https://rice-robotpi-lab.github.io/ManiDreams/api/index.html)
+- Real2sim:
+  - Better shape matching
+  - Multi-physics support based on newton (linkage, fluid, deformable, etc)
+- Policies:
+  - Integration with recent VLAs and RL pipelines  
 
 ## Project Structure
 
