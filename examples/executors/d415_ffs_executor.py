@@ -272,15 +272,22 @@ class D415FFSExecutor(ExecutorBase):
         logger.info("D415FFSExecutor reset")
         return None
 
-    def get_obs(self) -> Optional[DRIS]:
+    def get_obs(self, captured_frames=None) -> Optional[DRIS]:
         """Run one frame of perception: capture -> FFS -> SAM2 -> OBB -> DRIS.
+
+        Args:
+            captured_frames: Optional (ir_left, ir_right, color_bgr) tuple.
+                If provided, skips internal capture and uses these frames.
 
         Returns:
             DRIS with OBB observation if object is tracked, else None.
             Always updates self.last_* fields for visualization.
         """
-        # 1. Capture
-        ir_left, ir_right, color_bgr = self.capture_frames()
+        # 1. Capture (or reuse pre-captured frames)
+        if captured_frames is not None:
+            ir_left, ir_right, color_bgr = captured_frames
+        else:
+            ir_left, ir_right, color_bgr = self.capture_frames()
         self.last_color_bgr = color_bgr
 
         # 2. SAM2 track

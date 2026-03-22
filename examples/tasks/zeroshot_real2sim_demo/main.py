@@ -604,6 +604,10 @@ def main():
         while True:
             t0 = time.time()
 
+            # --- Always capture frames (keep 2D display live during sim) ---
+            ir_left, ir_right, color_bgr = executor.capture_frames()
+            executor.last_color_bgr = color_bgr
+
             # --- Reset ---
             if need_reset[0]:
                 need_reset[0] = False
@@ -626,11 +630,6 @@ def main():
 
             if action is not None:
                 act_mode = action['mode']
-                # Need current color frame for SAM2 prompt
-                color_bgr = executor.last_color_bgr
-                if color_bgr is None:
-                    # Capture one frame if we don't have one yet
-                    _, _, color_bgr = executor.capture_frames()
 
                 if act_mode in ('table_point', 'table_bbox') and not executor.plane_locked:
                     executor.add_prompt(act_mode, color_bgr, **action)
@@ -647,7 +646,7 @@ def main():
 
             # --- Perception ---
             if run_perception:
-                dris = executor.get_obs()
+                dris = executor.get_obs(captured_frames=(ir_left, ir_right, color_bgr))
 
                 # Viser: point cloud
                 if len(executor.last_points) > 0:
@@ -707,14 +706,8 @@ def main():
                 sim_actors_handle[0].batched_positions = sim_pos_to_cam(actor_pos, R_c2s, plane_center)
                 sim_actors_handle[0].batched_wxyzs = sim_quat_to_cam(actor_quat, R_c2s)
 
-            # --- 2D display ---
-            display = executor.last_color_bgr
-            if display is None:
-                # First frame before perception runs
-                frames = executor.rs_pipeline.wait_for_frames()
-                display = np.asanyarray(frames.get_color_frame().get_data())
-
-            display = display.copy()
+            # --- 2D display (always use fresh frame from capture above) ---
+            display = color_bgr.copy()
 
             # Overlay masks
             if executor.table_mask is not None and np.any(executor.table_mask):
