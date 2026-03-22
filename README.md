@@ -101,7 +101,11 @@ Real-time object detection (D415 + stereo) with domain-randomized Newton physics
   - Better shape matching
   - Multi-physics support based on newton (linkage, fluid, deformable, etc)
 - Policies:
-  - Integration with recent VLAs and RL pipelines  
+  - Integration with recent VLAs and RL pipelines
+- System ID:
+  - VLM-based estimation
+  - from given interation history (extract from videos)
+  - Online refinement   
 
 ## Project Structure
 
