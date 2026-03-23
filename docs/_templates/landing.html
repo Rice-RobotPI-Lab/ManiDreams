@@ -176,6 +176,41 @@
       border-radius: 10px;
     }
 
+    /* Responsive video gallery — normal flex on desktop, horizontal scroll on mobile */
+    .responsive-video-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .responsive-video-gallery .video-item {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+    .responsive-video-gallery .video-item video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .responsive-video-gallery {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10px;
+        cursor: grab;
+        justify-content: flex-start;
+      }
+      .responsive-video-gallery:active { cursor: grabbing; }
+      .responsive-video-gallery::-webkit-scrollbar { height: 6px; }
+      .responsive-video-gallery::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+      .responsive-video-gallery .video-item {
+        flex: 0 0 75vw;
+        scroll-snap-align: start;
+      }
+    }
+
     /* Footer */
     .footer .icon-link {
       font-size: 25px;
@@ -478,34 +513,30 @@
       </div>
     </div>
 
-    <div class="columns is-centered">
-      <!-- Object Pushing (sim) -->
-      <div class="column is-one-quarter video-item" id="example-pushing-sim">
-        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+    <div class="responsive-video-gallery">
+      <div class="video-item" id="example-pushing-sim">
+        <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/11.mp4" type="video/mp4">
         </video>
         <div class="video-label">Object Pushing</div>
         <div class="video-desc">Simulation-based TSIP</div>
       </div>
-      <!-- Object Pushing (learned) -->
-      <div class="column is-one-quarter video-item" id="example-pushing-learned">
-        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+      <div class="video-item" id="example-pushing-learned">
+        <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/12.mp4" type="video/mp4">
         </video>
         <div class="video-label">Object Pushing</div>
         <div class="video-desc">Learning-based TSIP</div>
       </div>
-      <!-- Ball Catching -->
-      <div class="column is-one-quarter video-item" id="example-catching">
-        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+      <div class="video-item" id="example-catching">
+        <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/13.mp4" type="video/mp4">
         </video>
         <div class="video-label">Ball Catching</div>
         <div class="video-desc">RL policy sampler</div>
       </div>
-      <!-- Card Picking -->
-      <div class="column is-one-quarter video-item" id="example-picking">
-        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+      <div class="video-item" id="example-picking">
+        <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/14.mp4" type="video/mp4">
         </video>
         <div class="video-label">Card Picking</div>
@@ -527,20 +558,16 @@
       </div>
     </div>
 
-    <!-- Real Task 1 -->
-    <div class="columns is-centered">
-      <div class="column is-full video-item">
-        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+    <div class="responsive-video-gallery">
+      <div class="video-item">
+        <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/real1.mp4" type="video/mp4">
         </video>
         <div class="video-label">Random Object Picking from Clutter</div>
         <div class="video-desc">Push-then-pick strategy with real-time DRIS via SAM2</div>
       </div>
-    </div>
-    <!-- Real Task 2 -->
-    <div class="columns is-centered">
-      <div class="column is-full video-item">
-        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+      <div class="video-item">
+        <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/real2.mp4" type="video/mp4">
         </video>
         <div class="video-label">Flat Object Scooping from Clutter</div>
@@ -567,26 +594,23 @@
       </div>
     </div>
 
-    <div class="columns is-centered">
-      <!-- PushCube -->
-      <div class="column video-item">
-        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+    <div class="responsive-video-gallery">
+      <div class="video-item">
+        <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/1.mp4" type="video/mp4">
         </video>
         <div class="video-label">PushCube</div>
         <div class="video-desc">Push a cube to a target location</div>
       </div>
-      <!-- PickCube -->
-      <div class="column video-item">
-        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+      <div class="video-item">
+        <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/2.mp4" type="video/mp4">
         </video>
         <div class="video-label">PickCube</div>
         <div class="video-desc">Pick up a cube and move to a goal position</div>
       </div>
-      <!-- PushT -->
-      <div class="column video-item">
-        <video autoplay controls muted loop playsinline style="width:100%; border-radius:10px;">
+      <div class="video-item">
+        <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/3.mp4" type="video/mp4">
         </video>
         <div class="video-label">PushT</div>
@@ -736,8 +760,8 @@
 </footer>
 
 <script>
-// Drag-to-scroll for horizontal video rows
-document.querySelectorAll('.dris-scroll-wrapper').forEach(function(row) {
+// Drag-to-scroll for all horizontal-scrollable galleries
+document.querySelectorAll('.dris-scroll-wrapper, .responsive-video-gallery').forEach(function(row) {
   var isDown = false, startX, scrollLeft;
   row.addEventListener('mousedown', function(e) {
     isDown = true; startX = e.pageX - row.offsetLeft; scrollLeft = row.scrollLeft;

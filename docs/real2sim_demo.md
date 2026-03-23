@@ -20,7 +20,7 @@ The workflow:
 ## Prerequisites
 
 **Hardware:**
-- Intel RealSense D415 camera (USB 3.0)
+- Intel RealSense D415 camera (or any intrinsics-calibrated stereo cameras that works with FFS)
 - NVIDIA GPU with CUDA support (tested on RTX 3070+)
 
 **Software:**
