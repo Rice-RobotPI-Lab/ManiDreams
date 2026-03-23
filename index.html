@@ -176,6 +176,31 @@
       border-radius: 10px;
     }
 
+    /* Mobile-wide: allow wide content to overflow with horizontal scroll on mobile */
+    .mobile-wide {
+      overflow-x: visible;
+    }
+    .mobile-wide > img,
+    .mobile-wide > video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .mobile-wide {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+      }
+      .mobile-wide::-webkit-scrollbar { height: 6px; }
+      .mobile-wide::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+      .mobile-wide > img,
+      .mobile-wide > video {
+        min-width: 140vw;
+        width: 140vw;
+      }
+    }
+
     /* Responsive video gallery — normal flex on desktop, horizontal scroll on mobile */
     .responsive-video-gallery {
       display: flex;
@@ -289,7 +314,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="_static/media/splash.svg" alt="ManiDreams Splash Figure" style="width:100%; border-radius:10px;">
+      <div class="mobile-wide">
+        <img src="_static/media/splash.svg" alt="ManiDreams Splash Figure">
+      </div>
       <h2 class="subtitle has-text-centered">
         <b>ManiDreams</b> maintains a time-varying constraint (cage) around target objects,
         sampling and evaluating candidate actions via parallel forward simulation for robust execution.
@@ -416,7 +443,9 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Pipeline</h2>
-    <img src="_static/media/ManiDreams_pipeline.svg" alt="ManiDreams Pipeline" style="width:100%; border-radius:10px;">
+    <div class="mobile-wide">
+      <img src="_static/media/ManiDreams_pipeline.svg" alt="ManiDreams Pipeline">
+    </div>
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <div class="content has-text-justified" style="margin-top: 1rem;">
@@ -558,21 +587,23 @@
       </div>
     </div>
 
-    <div class="responsive-video-gallery">
-      <div class="video-item">
+    <div class="video-item">
+      <div class="mobile-wide">
         <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/real1.mp4" type="video/mp4">
         </video>
-        <div class="video-label">Random Object Picking from Clutter</div>
-        <div class="video-desc">Push-then-pick strategy with real-time DRIS via SAM2</div>
       </div>
-      <div class="video-item">
+      <div class="video-label">Random Object Picking from Clutter</div>
+      <div class="video-desc">Push-then-pick strategy with real-time DRIS via SAM2</div>
+    </div>
+    <div class="video-item" style="margin-top: 1.5rem;">
+      <div class="mobile-wide">
         <video autoplay controls muted loop playsinline>
           <source src="https://github.com/Rice-RobotPI-Lab/ManiDreams/releases/download/media-v1/real2.mp4" type="video/mp4">
         </video>
-        <div class="video-label">Flat Object Scooping from Clutter</div>
-        <div class="video-desc">Push-to-corner-then-scoop strategy with real-time DRIS via SAM2</div>
       </div>
+      <div class="video-label">Flat Object Scooping from Clutter</div>
+      <div class="video-desc">Push-to-corner-then-scoop strategy with real-time DRIS via SAM2</div>
     </div>
   </div>
 </section>
@@ -627,7 +658,9 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Benchmark Results</h2>
-    <img src="_static/media/Exp_1.svg" alt="Benchmark Results" style="width:100%; border-radius:10px;">
+    <div class="mobile-wide">
+      <img src="_static/media/Exp_1.svg" alt="Benchmark Results">
+    </div>
     <p class="has-text-centered" style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;">
       Comparison of cage-constrained methods against baselines across manipulation tasks.
     </p>
