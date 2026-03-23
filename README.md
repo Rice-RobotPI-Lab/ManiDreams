@@ -94,6 +94,8 @@ Use `--num_samples 0` for baseline (direct policy) or `--num_samples 16` for CAG
 ### Zero-shot Real-to-Sim Demo
 
 Real-time object detection (D415 + stereo) with domain-randomized Newton physics simulation. See [setup tutorial](https://rice-robotpi-lab.github.io/ManiDreams/real2sim_demo.html) and [demo videos](https://rice-robotpi-lab.github.io/ManiDreams/index.html#dris-real2sim).
+<img width="1437" height="828" alt="image" src="https://github.com/user-attachments/assets/8d65bf4e-419e-4a75-a7e7-6987f456747b" />
+
 
 ## TODO
 
