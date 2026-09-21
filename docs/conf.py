@@ -100,6 +100,9 @@ html_title = "ManiDreams"
 html_show_copyright = True
 html_show_sphinx = False
 html_static_path = ["_static"]
+# Copy the standalone IROS presentation verbatim to /ManiDreams/slides/.
+# Keeping it in the source build preserves it on subsequent Pages deployments.
+html_extra_path = ["_extra"]
 html_css_files = ["custom.css"]
 
 html_theme_options = {

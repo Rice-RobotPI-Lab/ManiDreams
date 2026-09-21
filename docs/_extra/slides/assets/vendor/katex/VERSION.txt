@@ -1,0 +1,2 @@
+KaTeX 0.18.7
+Source: https://registry.npmjs.org/katex/-/katex-0.18.7.tgz
