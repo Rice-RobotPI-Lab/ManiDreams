@@ -27,20 +27,20 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=385b3aba" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
     <script src="_static/documentation_options.js?v=a2693998"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
@@ -50,6 +50,7 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'custom_tasks';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="API Reference" href="api/index.html" />
@@ -57,20 +58,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -96,7 +103,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -315,11 +366,18 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
 
 
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -347,7 +405,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-implement-a-simulationbackend">Step 1: Implement a SimulationBackend</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-implement-a-cage">Step 2: Implement a Cage</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-wire-them-together">Step 3: Wire Them Together</a></li>
@@ -375,27 +433,27 @@
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MyTaskBackend</span><span class="p">(</span><span class="n">SimulationBackend</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_config</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;MyTask-v1&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">env_config</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"MyTask-v1"</span><span class="p">,</span> <span class="o">**</span><span class="n">env_config</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract state for broadcasting to parallel eval environments.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Extract state for broadcasting to parallel eval environments."""</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s1">&#39;object_pose&#39;</span><span class="p">:</span> <span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">raw_pose</span><span class="p">,</span>
-            <span class="s1">&#39;robot_qpos&#39;</span><span class="p">:</span> <span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">get_qpos</span><span class="p">(),</span>
+            <span class="s1">'object_pose'</span><span class="p">:</span> <span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">raw_pose</span><span class="p">,</span>
+            <span class="s1">'robot_qpos'</span><span class="p">:</span> <span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">robot</span><span class="o">.</span><span class="n">get_qpos</span><span class="p">(),</span>
         <span class="p">}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set state on parallel eval environments.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="s1">&#39;object_pose&#39;</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Set state on parallel eval environments."""</span>
+        <span class="k">if</span> <span class="s1">'object_pose'</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
             <span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">set_pose</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">state2dris</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observations</span><span class="p">,</span> <span class="n">env_indices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">env_config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert environment observations to DRIS objects.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Convert environment observations to DRIS objects."""</span>
         <span class="n">dris_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_envs</span><span class="p">):</span>
             <span class="n">dris_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DRIS</span><span class="p">(</span>
                 <span class="n">observation</span><span class="o">=</span><span class="n">observations</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;position&#39;</span><span class="p">:</span> <span class="n">obj_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]},</span>
+                <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s1">'position'</span><span class="p">:</span> <span class="n">obj_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]},</span>
             <span class="p">))</span>
         <span class="k">return</span> <span class="n">dris_list</span>
 
@@ -426,18 +484,18 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">state_space</span><span class="p">,</span> <span class="n">time_varying</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">target_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">target_pos</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;target_pos&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_pos</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'target_pos'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_pos</span><span class="p">,</span> <span class="s1">'radius'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initialized</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_define_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;target_pos&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_pos</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">'target_pos'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_pos</span><span class="p">,</span> <span class="s1">'radius'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_update_from_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">target_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;target_pos&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;radius&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'target_pos'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'radius'</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">set_cage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;target_pos&#39;</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'target_pos'</span><span class="p">,</span> <span class="s1">'radius'</span><span class="p">]:</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">region</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">region</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_from_parameters</span><span class="p">()</span>
@@ -446,22 +504,22 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">initialized</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dris_input</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cost = distance to target. Lower is better.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Cost = distance to target. Lower is better."""</span>
         <span class="n">dris_list</span> <span class="o">=</span> <span class="n">dris_input</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dris_input</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="n">dris_input</span><span class="p">]</span>
         <span class="n">costs</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">dris</span> <span class="ow">in</span> <span class="n">dris_list</span><span class="p">:</span>
-            <span class="n">pos</span> <span class="o">=</span> <span class="n">dris</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">,</span> <span class="n">dris</span><span class="o">.</span><span class="n">observation</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">dris</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'position'</span><span class="p">,</span> <span class="n">dris</span><span class="o">.</span><span class="n">observation</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
             <span class="n">dist</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">pos</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_pos</span><span class="p">))</span>
             <span class="n">costs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">costs</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dris_input</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Valid if within radius of target.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Valid if within radius of target."""</span>
         <span class="n">costs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">dris_input</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">c</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">costs</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_boundary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;center&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_pos</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">'center'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_pos</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="s1">'radius'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -475,7 +533,7 @@
 <span class="n">backend</span> <span class="o">=</span> <span class="n">MyTaskBackend</span><span class="p">()</span>
 <span class="n">tsip</span> <span class="o">=</span> <span class="n">SimulationBasedTSIP</span><span class="p">(</span>
     <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
-    <span class="n">env_config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;num_envs&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;obs_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="s1">&#39;sim_backend&#39;</span><span class="p">:</span> <span class="s1">&#39;gpu&#39;</span><span class="p">},</span>
+    <span class="n">env_config</span><span class="o">=</span><span class="p">{</span><span class="s1">'num_envs'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'obs_mode'</span><span class="p">:</span> <span class="s1">'state'</span><span class="p">,</span> <span class="s1">'sim_backend'</span><span class="p">:</span> <span class="s1">'gpu'</span><span class="p">},</span>
 <span class="p">)</span>
 
 <span class="c1"># 2. Create cage</span>
@@ -519,7 +577,7 @@
 <span class="n">backend</span> <span class="o">=</span> <span class="n">DiffusionBackend</span><span class="p">()</span>
 <span class="n">tsip</span> <span class="o">=</span> <span class="n">LearningBasedTSIP</span><span class="p">(</span>
     <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
-    <span class="n">model_config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;checkpoint&#39;</span><span class="p">:</span> <span class="s1">&#39;path/to/diamond_model&#39;</span><span class="p">},</span>
+    <span class="n">model_config</span><span class="o">=</span><span class="p">{</span><span class="s1">'checkpoint'</span><span class="p">:</span> <span class="s1">'path/to/diamond_model'</span><span class="p">},</span>
 <span class="p">)</span>
 
 <span class="c1"># The rest of the pipeline (Cage, Solver, main loop) stays identical.</span>
@@ -536,7 +594,7 @@
 
 <span class="c1"># Create backend with 8 DRIS copies per environment</span>
 <span class="n">backend</span> <span class="o">=</span> <span class="n">DRISBackend</span><span class="p">(</span>
-    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;PushCube-v1&quot;</span><span class="p">,</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s2">"PushCube-v1"</span><span class="p">,</span>
     <span class="n">n_dris_copies</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
     <span class="n">pose_noise</span><span class="o">=</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span>  <span class="c1"># dx,dy,dz,droll,dpitch,dyaw</span>
 <span class="p">)</span>
@@ -544,9 +602,9 @@
 <span class="n">tsip</span> <span class="o">=</span> <span class="n">SimulationBasedTSIP</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span> <span class="n">env_config</span><span class="o">=</span><span class="p">{</span><span class="o">...</span><span class="p">})</span>
 
 <span class="c1"># After TSIP.next(), each DRIS contains:</span>
-<span class="c1">#   dris.context[&#39;mean_position&#39;]  → [3] mean across 8 copies</span>
-<span class="c1">#   dris.context[&#39;variance&#39;]       → [3] variance across 8 copies</span>
-<span class="c1">#   dris.context[&#39;dris_poses&#39;]     → [8, 7] individual copy poses</span>
+<span class="c1">#   dris.context['mean_position']  → [3] mean across 8 copies</span>
+<span class="c1">#   dris.context['variance']       → [3] variance across 8 copies</span>
+<span class="c1">#   dris.context['dris_poses']     → [8, 7] individual copy poses</span>
 
 <span class="c1"># DRISCage uses this for uncertainty-aware evaluation:</span>
 <span class="n">cage</span> <span class="o">=</span> <span class="n">DRISCage</span><span class="p">(</span>
@@ -606,7 +664,7 @@
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-implement-a-simulationbackend">Step 1: Implement a SimulationBackend</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-implement-a-cage">Step 2: Implement a Cage</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-wire-them-together">Step 3: Wire Them Together</a></li>
@@ -660,8 +718,8 @@ By ManiDreams Team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 
   <footer class="bd-footer">
   </footer>

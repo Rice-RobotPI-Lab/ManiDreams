@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ManiDreams — a nine-minute IROS 2026 presentation by Gaotian Wang.">
+<title>ManiDreams · IROS 2026</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="styles.css">
+<script src="assets/vendor/katex/katex.min.js" defer></script>
+<script src="deck-data.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div id="viewport"><main id="stage" aria-label="ManiDreams presentation">
+  <div id="slides"></div>
+  <footer class="slide-footer"><span><strong>ManiDreams</strong> <span class="footer-sep">/</span> IROS 2026</span><span id="chapter-label"></span><span id="slide-count"></span></footer>
+  <div id="progress" aria-hidden="true"><div></div></div>
+</main></div>
+<aside id="talk-timer" aria-label="Nine-minute presentation timer">
+  <button id="talk-timer-toggle" data-action="timer" type="button" aria-label="Start the nine-minute timer" aria-pressed="false" title="Start timer (T)">
+    <span id="talk-timer-icon" aria-hidden="true">▶</span>
+    <span id="talk-timer-value" role="timer" aria-live="off">09:00</span>
+    <span id="talk-timer-status">Start</span>
+  </button>
+  <button id="talk-timer-reset" data-action="resetTimer" type="button" aria-label="Reset timer to nine minutes" title="Reset to 09:00">Reset</button>
+</aside>
+<nav id="controls" aria-label="Presentation controls">
+  <button data-action="prev" title="Previous (←)">←</button>
+  <button data-action="overview" title="Slide overview (O)" id="nav-count">01 / 15</button>
+  <button data-action="next" title="Next (→ or Space)">→</button>
+  <span class="control-divider"></span>
+  <button data-action="media" id="media-toggle" title="Pause / play looping clips (M)" aria-pressed="false">Pause clips</button>
+  <button data-action="presenter" title="Open presenter window (P)">Presenter</button>
+  <button data-action="fullscreen" title="Fullscreen (F)">Fullscreen</button>
+  <button data-action="help" title="Keyboard shortcuts (?)">?</button>
+</nav>
+<dialog id="overview" aria-label="Slide overview"><div class="dialog-head"><h2>Presentation</h2><button data-action="close">Close ×</button></div><div id="overview-list"></div></dialog>
+<dialog id="help" aria-label="Keyboard shortcuts"><div class="dialog-head"><h2>Presenting ManiDreams</h2><button data-action="close">Close ×</button></div>
+<p class="help-intro">15 slides · 9 minutes · 2 backup slides</p>
+<div class="shortcut-grid">
+<kbd>→ / Space / Page Down</kbd><span>Next build or slide</span><kbd>← / Page Up</kbd><span>Previous build or slide</span>
+<kbd>F</kbd><span>Fullscreen</span><kbd>P</kbd><span>Presenter window with notes and timer</span>
+<kbd>O</kbd><span>Slide overview and backups</span><kbd>T</kbd><span>Start or pause the talk timer</span>
+<kbd>R</kbd><span>Replay this slide's clips</span><kbd>M</kbd><span>Pause / play looping clips</span>
+<kbd>B</kbd><span>Blackout / restore</span>
+<kbd>N</kbd><span>Show rehearsal notes on this screen</span><kbd>Home / End</kbd><span>Opening / closing slide</span>
+<kbd>?</kbd><span>Shortcuts</span><kbd>Esc</kbd><span>Close overlay</span></div>
+<p>Click the timer at the top right to start or pause. Reset returns it to 09:00. After nine minutes, it shows overtime. Clips loop automatically; slides advance only when you navigate. A timed rehearsal is available in Presenter view.</p></dialog>
+<aside id="rehearsal-notes" hidden aria-label="Rehearsal notes"></aside>
+<div id="blackout" hidden></div>
+<div id="announcer" class="sr-only" aria-live="polite"></div>
+<section id="presenter" hidden>
+  <header class="presenter-header"><div><strong>ManiDreams</strong><span>Presenter view</span></div><div id="connection">Connecting to audience view…</div></header>
+  <div class="presenter-toolbar">
+    <div class="clock-group"><strong id="elapsed">00:00</strong><span id="remaining">09:00 remaining</span></div>
+    <button data-command="timer">Start / pause timer</button><button data-command="resetTimer">Reset timer</button>
+    <button data-command="auto">Rehearse 9:00</button><button data-command="stopAuto">Stop auto</button>
+  </div>
+  <div class="speaker-layout">
+    <div class="speaker-visuals"><div class="preview-frame"><iframe id="current-preview" title="Current slide preview"></iframe></div>
+      <div class="speaker-nav"><button data-command="prev">← Previous</button><span id="speaker-position"></span><button data-command="next">Next →</button></div>
+      <div id="schedule"></div><h3 class="next-label">Next slide</h3><div class="next-frame"><iframe id="next-preview" title="Next slide preview"></iframe></div>
+    </div>
+    <div id="speaker-notes" class="speaker-notes"></div>
+  </div>
+</section>
+</body></html>
